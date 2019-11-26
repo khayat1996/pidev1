@@ -1,0 +1,15 @@
+event_events:
+    resource: "@MainBundle/Controller/EventsController.php"
+    type:     annotation
+
+main:
+    resource: "@MainBundle/Resources/config/routing.yml"
+    prefix:   /main
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
