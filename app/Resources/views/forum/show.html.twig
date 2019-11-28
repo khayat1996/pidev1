@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Forum</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idarticle</th>
+                <td>{{ forum.idArticle }}</td>
+            </tr>
+            <tr>
+                <th>Iduser</th>
+                <td>{{ forum.idUser }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ forum.titre }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ forum.image }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ forum.description }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ forum.date }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('forum_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('forum_edit', { 'idArticle': forum.idArticle }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
