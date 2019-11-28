@@ -1,10 +1,28 @@
-{% extends 'base.html.twig' %}
 
-{% block body %}
+{% extends 'base.html.twig' %}
+{% block second %}
+
+    <center>
+        <table border="1">
     <h1>Event creation</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
+         Nom Organisateur :* {{ form_widget(form.nomOrg) }}
+            <br>
+          Nom Event :* {{ form_widget(form.nomEvent) }}
+            <br>
+            Lieu :* {{ form_widget(form.lieu) }}
+            <br>
+            nombre de place :* {{ form_widget(form.nbPlace) }}
+            <br>
+             Date Event :* {{ form_widget(form.dtEvent) }}
+            <br>
+            Prix(dt) :* {{ form_widget(form.prix) }}
+            <br>
+            Description :* {{ form_widget(form.description) }}
+            <br>
+            Etat :* {{ form_widget(form.etat) }}
+            <br>
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 
@@ -13,4 +31,10 @@
             <a href="{{ path('events_index') }}">Back to the list</a>
         </li>
     </ul>
+        </table>
+        </center>
+
+
+
+
 {% endblock %}
