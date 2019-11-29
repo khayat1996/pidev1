@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% block second %}
+    <center></center>
+<table border="1">
+    <thead>
+    <tr>
+
+        <th>Nom Organsiateur</th>
+        <th>Nom Event</th>
+        <th>Lieu</th>
+        <th>Nombre de Place</th>
+        <th>Date Event</th>
+        <th>Prix (dt)</th>
+        <th>Description</th>
+        <th>Etat</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for event in events %}
+    <tr>
+
+        <td>{{ event.nomOrg }}</td>
+        <td>{{ event.nomEvent }}</td>
+        <td>{{ event.lieu }}</td>
+        <td>{{ event.nbPlace }}</td>
+        <td>{% if event.dtEvent %}{{ event.dtEvent|date('Y-m-d') }}{% endif %}</td>
+        <td>{{ event.prix }}</td>
+        <td>{{ event.description }}</td>
+        <td>{{ event.etat }}</td>
+
+        <td>
+            <ul>
+                <li>
+                    <a href="{{ path('events_show', { 'idEv': event.idEv }) }}">show</a>
+                </li>
+                <li>
+                    <a href="{{ path('events_edit', { 'idEv': event.idEv }) }}">edit</a>
+                </li>
+            </ul>
+    <tr>
+    {%endfor%}
+        {{ dump(events) }}
+</table>
+    <ul>
+    <li>
+        <a href="{{ path('events_index') }}">Back to the list</a>
+    </li>
+    </ul>
+    </center>
+{% endblock %}
+

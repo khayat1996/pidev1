@@ -1,255 +1,343 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html>
 
+<!-- Mirrored from gambolthemes.net/workwise-new/user-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2019 18:30:31 GMT -->
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Tech Event">
-    <meta name="keywords" content="The Summit Conference, unica, creative, html">
+    <title>EXPO'TECH</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TechEvent</title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&display=swap" rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="{{ asset('Source/summit/css/bootstrap.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('Source/summit/css/font-awesome.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('Source/summit/css/flaticon.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('Source/summit/css/owl.carousel.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('Source/summit/css/slicknav.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('Source/summit/css/style.css')}}" type="text/css">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('Source/Event/css/animate.css')}}">
+    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Source/Event/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Source/Event/css/line-awesome.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Source/Event/css/line-awesome-font-awesome.min.css')}}">
+    <link href="{{ asset('Source/Event/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Source/Event/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Source/Event/lib/slick/slick.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Source/Event/lib/slick/slick-theme.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Source/Event/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Source/Event/css/responsive.css')}}">
 </head>
+{% block first %}
+{% endblock %}
+{% block second %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Page d' accueil</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <link rel="stylesheet" type="text/css" href="css/animate.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/line-awesome.css">
+        <link rel="stylesheet" type="text/css" href="css/line-awesome-font-awesome.min.css">
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
+        <link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    </head>
 
-<body>
-<!-- Page Preloder -->
-<div id="preloder">
-    <div class="loader"></div>
-</div>
 
-<!-- Header Section Begin -->
-<header class="header-section">
-    <div class="container-fluid">
-        <div class="row bg-overlay">
-            <div class="header">
-                <div class="col-lg-12">
-                    <div class="logo">
-                        <a href="./index.html"><img src="{{ asset('Source/summit/img/capture.png')}}" alt="" ></a>
-                    </div>
-                    <div class="navigation mobile-menu">
-                        <div class="main-menu">
-                            <nav>
-                                <ul>
-                                    <li><a class="active" href="./index.html">Home</a></li>
-                                    <li><a href="./speakers.html">Events</a></li>
-                                    <li><a href="./tickets.html">Reservation</a></li>
-                                    <li><a href="./blog.html">Forum</a></li>
-                                    <li><a href="./contact.html">Contact</a></li>
+    <body class="sign-in" oncontextmenu="return false;">
+
+
+    <div class="wrapper">
+
+        <div class="sign-in-page">
+            <div class="signin-popup">
+                <div class="signin-pop">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="cmp-info">
+                                <div class="cm-logo">
+                                    <img src="{{ asset('Source/Event/images/khayat.png')}}" alt="">
+                                    <p>Expo'tech,  is a global freelancing platform and social networking where businesses and independent professionals connect and collaborate remotely</p>
+                                </div><!--cm-logo end-->
+                                <img src="{{ asset('Source/Event/images/tech.jpg')}}" alt="">
+                            </div><!--cmp-info end-->
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="login-sec">
+                                <ul class="sign-control">
+                                    <li data-tab="tab-1" class="current"><a href="#" title="">Connexion</a></li>
+                                    <li data-tab="tab-2"><a href="#" title="">S'incrivez vous</a></li>
                                 </ul>
-                            </nav>
+                                <div class="sign_in_sec current" id="tab-1">
+
+                                    <h3>Connexion</h3>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-lg-12 no-pdd">
+                                                <div class="sn-field">
+                                                    <input type="text" name="email" placeholder="Email">
+                                                    <i class="la la-user"></i>
+                                                </div><!--sn-field end-->
+                                            </div>
+                                            <div class="col-lg-12 no-pdd">
+                                                <div class="sn-field">
+                                                    <input type="password" name="password" placeholder="Mot de passe">
+                                                    <i class="la la-lock"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 no-pdd">
+                                                <div class="checky-sec">
+                                                    <div class="fgt-sec">
+                                                        <input type="checkbox" name="cc" id="c1">
+                                                        <label for="c1">
+                                                            <span></span>
+                                                        </label>
+                                                        <small>Souvenez vous de moi</small>
+                                                    </div><!--fgt-sec end-->
+                                                    <a href="#" title="">Mot de passe oublié ?</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 no-pdd">
+                                                <button type="submit" value="submit">Connexion</button>
+                                                <a class="nav-link" href="{{ path('inscription_page') }}">S'inscrire</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="login-resources">
+                                        <h4>connectez avec un autre compte</h4>
+                                        <ul>
+                                            <li><a href="#" title="" class="fb"><i class="fa fa-facebook"></i>Connectez avec Facebook</a></li>
+                                            <li><a href="#" title="" class="tw"><i class="fa fa-twitter"></i>Connectez avec Twitter</a></li>
+                                        </ul>
+                                    </div><!--login-resources end-->
+                                </div><!--sign_in_sec end-->
+                                <div class="sign_in_sec" id="tab-2">
+                                    <div class="signup-tab">
+                                        <i class="fa fa-long-arrow-left"></i>
+                                        <h2>khayatmed@example.com</h2>
+                                        <ul>
+                                            <li data-tab="tab-3" class="current"><a href="#" title="">Utilisateur</a></li>
+                                            <li data-tab="tab-4"><a href="#" title="">CLubs</a></li>
+                                        </ul>
+                                    </div><!--signup-tab end-->
+                                    <div class="dff-tab current" id="tab-3">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="sn-field">
+                                                        <input type="text" name="nom" placeholder="Nom">
+                                                        <i class="la la-user"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="sn-field">
+                                                        <input type="text" name="prenom" placeholder="Prenom">
+                                                        <i class="la la-user"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="sn-field">
+                                                        <input type="text" name="pays" placeholder="Pays">
+                                                        <i class="la la-globe"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="sn-field">
+                                                        <select>
+                                                            <option>sexe</option>
+                                                            <option>Masculin</option>
+                                                            <option>Feminin</option>
+                                                        </select>
+                                                        <i class="la la-dropbox"></i>
+                                                        <span><i class="fa fa-ellipsis-h"></i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="sn-field">
+                                                        <input type="date" name="dateNaiss" placeholder="">
+                                                        <i class="la la-date"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="sn-field">
+                                                        <input type="email" name="email" placeholder="Email ">
+                                                        <i class="la la-email"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="sn-field">
+                                                        <input type="password" name="password" placeholder="Mot de passe ">
+                                                        <i class="la la-lock"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="sn-field">
+                                                        <input type="password" name="repeat-password" placeholder="Repeter le mot de passe">
+                                                        <i class="la la-lock"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="checky-sec st2">
+                                                        <div class="fgt-sec">
+                                                            <input type="checkbox" name="cc" id="c2">
+                                                            <label for="c2">
+                                                                <span></span>
+                                                            </label>
+                                                            <small>Yes, I understand and agree to the workwise Terms & Conditions.</small>
+                                                        </div><!--fgt-sec end-->
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <button type="submit" value="submit">Enregistrer</button>
+                                                </div>
+                                            </div>{#
+                                            {{ form_row(formInscription.prenom,{'label' : 'Prenom','attr': {'placeholder' : "Prenom"}}) }}
+                                            {{ form_row(formInscription.nom,{'label' : 'Nom','attr': {'placeholder' : "Nom"}}) }}
+                                            {{ form_row(formInscription.sexe,{'label' : 'Sexe','attr': {'placeholder' : "Sexe"}}) }}
+                                            {{ form_row(formInscription.dateDeNaissance,{'label' : 'Date de naissance','attr': {'placeholder' : "Date de naissance "}}) }}
+                                            {{ form_row(formInscription.email,{'label' : 'Email','attr': {'placeholder' : "Email "}}) }}
+                                            {{ form_row(formInscription.password,{'label' : 'Mot de passe','attr': {'placeholder' : "Mot de passe"}}) }}
+                                            {{ form_row(formInscription.confirmPassword,{'label' : 'confirmer le mot passe ','attr': {'placeholder' : "Retapper le mot de passe "}}) }}
+
+                                            <button type="submit" class="btn btn-success">Enregistrer</button>
+                                            {{ form_end(formInscription) }}#}
+                                        </form>
+                                    </div><!--dff-tab end-->
+                                    <div class="dff-tab" id="tab-4">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="sn-field">
+                                                        <input type="text" name="Nom" placeholder="Nom de l'entrprise">
+                                                        <i class="la la-building"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="sn-field">
+                                                        <input type="text" name="pays" placeholder="Pays">
+                                                        <i class="la la-globe"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="sn-field">
+                                                        <input type="password" name="password" placeholder="Mot de passe">
+                                                        <i class="la la-lock"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="sn-field">
+                                                        <input type="password" name="repeat-password" placeholder="Repeter le mot de passe">
+                                                        <i class="la la-lock"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="checky-sec st2">
+                                                        <div class="fgt-sec">
+                                                            <input type="checkbox" name="cc" id="c3">
+                                                            <label for="c3">
+                                                                <span></span>
+                                                            </label>
+                                                            <small>Yes, I understand and agree to the workwise Terms & Conditions.</small>
+                                                        </div><!--fgt-sec end-->
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <button type="submit" value="submit">Enregistrer</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div><!--dff-tab end-->
+                                </div>
+                            </div><!--login-sec end-->
                         </div>
-                        <div class="top-social">
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                            <a href="#"><i class="fa fa-behance"></i></a>
-                            <a href="#" class="search-btn search-trigger"><i class="fa fa-search"></i></a>
-                        </div>
                     </div>
-                    <div id="mobile-menu-wrap"></div>
+                </div><!--signin-pop end-->
+            </div><!--signin-popup end-->
+            <div class="footy-sec">
+                <div class="container">
+                    <ul>
+                        <li><a href="help-center.html" title="">Help Center</a></li>
+                        <li><a href="about.html" title="">About</a></li>
+                        <li><a href="#" title="">Privacy Policy</a></li>
+                        <li><a href="#" title="">Community Guidelines</a></li>
+                        <li><a href="#" title="">Cookies Policy</a></li>
+                        <li><a href="#" title="">Career</a></li>
+                        <li><a href="forum.html" title="">Forum</a></li>
+                        <li><a href="#" title="">Language</a></li>
+                        <li><a href="#" title="">Copyright Policy</a></li>
+                    </ul>
+                    <p><img src="images/copy-icon.png" alt="">Copyright 2019</p>
                 </div>
-            </div>
-        </div>
-    </div>
-</header>
-<!-- Header End -->
+            </div><!--footy-sec end-->
+        </div><!--sign-in-page end-->
 
-<!-- Search Bar Begin -->
-<section class="search-bar-wrap">
-    <span class="search-close"><i class="fa fa-close"></i></span>
-    <div class="search-bar-table">
-        <div class="search-bar-tablecell">
-            <div class="search-bar-inner">
-                <h2>Search</h2>
-                <form action="#">
-                    <input type="search" placeholder="Type Keywords">
-                    <button type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Search Bar End -->
-<!-- Hero Area Begin -->
-<div class="hero-section">
-    <div class="hero-items owl-carousel">
-        <div class="single-hero-item set-bg" data-setbg="{{ asset('Source/summit/img/slider/bg-1.jpg')}}">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <span>February 9<sup>TH</sup> - 15<sup>TH</sup> 2019 </span>
-                        <h1>Summit<br />Conference<br />2019</h1>
-                        <h2 class="f-bold">World Trade Center, Gibraltar</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single-hero-item set-bg" data-setbg="{{ asset('Source/summit/img/slider/bg-2.jpg')}}">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <span>February 9<sup>TH</sup> - 15<sup>TH</sup> 2019 </span>
-                        <h1>Summit<br />Conference<br />2019</h1>
-                        <h2 class="f-bold">World Trade Center, Gibraltar</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single-hero-item set-bg" data-setbg="{{ asset('Source/summit/img/slider/bg-3.jpg')}}">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <span>February 9<sup>TH</sup> - 15<sup>TH</sup> 2019 </span>
-                        <h1>Summit<br />Conference<br />2019</h1>
-                        <h2 class="f-bold">World Trade Center, Gibraltar</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single-hero-item set-bg" data-setbg="{{ asset('Source/summit/img/slider/bg-4.jpg')}}">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <span>February 9<sup>TH</sup> - 15<sup>TH</sup> 2019 </span>
-                        <h1>Summit<br />Conference<br />2019</h1>
-                        <h2 class="f-bold">World Trade Center, Gibraltar</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Hero Area End -->
 
-<!-- Event Counter Begin -->
-<section class="event-counter">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="event-name">
-                    <h2>Next Event</h2>
-                    <h4>August 25, 2019 <span>Starting @ 09:00 AM</span></h4>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="countdown-timer" id="countdown">
-                    <div class="cd-item">
-                        <span>56</span>
-                        <p>Days</p>
-                    </div>
-                    <div class="cd-item">
-                        <span>12</span>
-                        <p>Hours</p>
-                    </div>
-                    <div class="cd-item">
-                        <span>40</span>
-                        <p>Minutes</p>
-                    </div>
-                    <div class="cd-item">
-                        <span>52</span>
-                        <p>Seconds</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Event Counter End -->
-{% block body %}
-{% endblock  %}
+    </div><!--theme-layout end-->
 
-<!-- Footer Begin -->
-<footer class="footer-section">
-    <div class="container">
-        <div class="row pb-70">
-            <div class="col-lg-3 col-md-6">
-                <div class="company-widget">
-                    <h4>Company</h4>
-                    <ul>
-                        <li>Careers</li>
-                        <li>Volunteers</li>
-                        <li>Sustainability</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="event-widget">
-                    <h4>Our Events</h4>
-                    <ul>
-                        <li>Web Summit - Rome</li>
-                        <li>Collision - Madrid</li>
-                        <li>RISE - Hong Kong</li>
-                        <li>MoneyConf - Bucharest</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="links-widget">
-                    <h4>Usefull Links</h4>
-                    <ul>
-                        <li>Pre-register for 2019</li>
-                        <li>News</li>
-                        <li>Support centre</li>
-                        <li>Accessibility policy</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="contact-widget">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><i class="flaticon-placeholder-3"></i> <span>4127 Raoul Wallenber4127 Raoul Wallen berg
-                                    Place</span></li>
-                        <li><img src="{{ asset('Source/summit/img/phone.png')}}" alt=""> <span>203-808-8613</span></li>
-                        <li><img src="{{ asset('Source/summit/img/envelop.png')}}" alt=""> <span>khayat.mohamed@esprit.tn</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="copyright-area">
+
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/popper.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/slick/slick.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    </body>
+
+{% endblock %}
+
+
+<footer>
+    <div class="footy-sec mn no-margin">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="copyright-text">
-                        <div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
-                        <div class="footer-social">
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                            <a href="#"><i class="fa fa-behance"></i></a>
-                        </div>
-                        <div class="term">Terms and Conditions</div>
-                    </div>
-                </div>
-            </div>
+            <ul>
+                <li><a href="{{ asset('Source/Event/help-center.html')}}" title="">Help Center</a></li>
+                <li><a href="{{ asset('Source/Event/about.html')}}" title="">About</a></li>
+                <li><a href="#" title="">Privacy Policy</a></li>
+                <li><a href="#" title="">Community Guidelines</a></li>
+                <li><a href="#" title="">Cookies Policy</a></li>
+                <li><a href="#" title="">Career</a></li>
+                <li><a href="{{ asset('Source/Event/forum.html')}}" title="">Forum</a></li>
+                <li><a href="#" title="">Language</a></li>
+                <li><a href="#" title="">Copyright Policy</a></li>
+            </ul>
+            <p><img src="{{ asset('Source/Event/images/copy-icon2.png')}}" alt="">Copyright 2019</p>
+
         </div>
     </div>
-</footer>
-<!-- Footer End -->
+</footer><!--footer end-->
 
-<!-- Js Plugins -->
-<script src="{{ asset('Source/summit/js/jquery-3.3.1.min.js')}}"></script>
-<script src="{{ asset('Source/summit/js/bootstrap.min.js')}}"></script>
-<script src="{{ asset('Source/summit/js/jquery.slicknav.js')}}"></script>
-<script src="{{ asset('Source/summit/js/owl.carousel.min.js')}}"></script>
-<script src="{{ asset('Source/summit/js/circle-progress.min.js')}}"></script>
-<script src="{{ asset('Source/summit/js/jquery.countdown.min.js')}}"></script>
-<script src="{{ asset('Source/summit/js/main.js')}}"></script>
+
+<div class="overview-box" id="create-portfolio">
+    <div class="overview-edit">
+        <h3>Create Portfolio</h3>
+        <form>
+            <input type="text" name="pf-name" placeholder="Portfolio Name">
+            <div class="file-submit">
+                <input type="file" name="file">
+            </div>
+            <div class="pf-img">
+                <img src="images/resources/np.png" alt="">
+            </div>
+            <input type="text" name="website-url" placeholder="htp://www.example.com">
+            <button type="submit" class="save">Save</button>
+            <button type="submit" class="cancel">Cancel</button>
+        </form>
+        <a href="#" title="" class="close-box"><i class="la la-close"></i></a>
+    </div><!--overview-edit end-->
+</div><!--overview-box end-->
+
+
+
+</div><!--theme-layout end-->
+
+
+
+<script type="text/javascript" src="{{ asset('Source/Event/js/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('Source/Event/js/popper.js')}}"></script>
+<script type="text/javascript" src="{{ asset('Source/Event/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('Source/Event/lib/slick/slick.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('Source/Event/js/script.js')}}"></script>
 </body>
 
+<!-- Mirrored from gambolthemes.net/workwise-new/user-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Nov 2019 18:30:31 GMT -->
 </html>
+
+

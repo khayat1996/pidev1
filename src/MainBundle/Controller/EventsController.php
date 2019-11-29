@@ -2,6 +2,8 @@
 
 namespace MainBundle\Controller;
 
+use MainBundle\Form\EventsType;
+use MainBundle\Form\RechercheType;
 use MainBundle\Entity\Events;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -120,5 +122,42 @@ class EventsController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+    public function searchAction(Request $request)
+    {
+        $event = new Events();
+        $form = $this->createForm(RechercheType::class, $event);
+        $form = $form->handleRequest($request);
+        $nom = $request->get('search') ;
+        if ($form->isSubmitted()) {
+            $em= $this->getDoctrine()->getManager()->getRepository(Events::class);
+            $event= $em->find($event->getIdEv());
+
+        }
+        else
+        {
+            $event = $this->getDoctrine()->getRepository(Events::class)->findAll();
+        }
+        return $this->render('events/search.html.twig', array("form"=> $form->createView(),"events" => $event));
+
+    }
+
+    public function accueilAction(){
+
+        return $this->render("events/accueil.html.twig");
+    }
+
+    public function inscriptionAction(Request $request){
+
+
+        return $this->render("events/inscription.html.twig");
+    }
+    public function homeAction()
+    {
+        return $this->render("events/home.html.twig");
+    }
+    public function adminAction()
+    {
+        return $this->render("events/admin.html.twig");
     }
 }

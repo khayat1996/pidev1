@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Events list</h1>
-
-    <table>
+{% block second %}
+    <center>
+    <h1>EVENTS</h1>
+    <table border="1">
         <thead>
             <tr>
-                <th>Idev</th>
-                <th>Nomorg</th>
-                <th>Nomevent</th>
+
+                <th>Nom Organsiateur</th>
+                <th>Nom Event</th>
                 <th>Lieu</th>
-                <th>Nbplace</th>
-                <th>Dtevent</th>
-                <th>Prix</th>
+                <th>Nombre de Place</th>
+                <th>Date Event</th>
+                <th>Prix (dt)</th>
                 <th>Description</th>
                 <th>Etat</th>
                 <th>Actions</th>
@@ -21,7 +21,7 @@
         <tbody>
         {% for event in events %}
             <tr>
-                <td><a href="{{ path('events_show', { 'idEv': event.idEv }) }}">{{ event.idEv }}</a></td>
+
                 <td>{{ event.nomOrg }}</td>
                 <td>{{ event.nomEvent }}</td>
                 <td>{{ event.lieu }}</td>
@@ -44,10 +44,10 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('events_new') }}">Create a new event</a>
-        </li>
-    </ul>
+        <br>
+        <br>
+        <form action={{ path("events_new")}}>
+        <button>Create NEW</button>
+        </form>
+    </center>
 {% endblock %}

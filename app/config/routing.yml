@@ -13,7 +13,6 @@ main_forum:
 event_events:
     resource: "@MainBundle/Controller/EventsController.php"
     type:     annotation
-
 main:
     resource: "@MainBundle/Resources/config/routing.yml"
     prefix:   /main

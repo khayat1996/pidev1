@@ -1,44 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block second %}
+    <center>
     <h1>Event</h1>
 
-    <table>
+    <table border="1">
         <tbody>
             <tr>
-                <th>Idev</th>
+                <th>Id Event :</th>
                 <td>{{ event.idEv }}</td>
             </tr>
             <tr>
-                <th>Nomorg</th>
+                <th>Nom Organisateur :</th>
                 <td>{{ event.nomOrg }}</td>
             </tr>
             <tr>
-                <th>Nomevent</th>
+                <th>Nom Event :</th>
                 <td>{{ event.nomEvent }}</td>
             </tr>
             <tr>
-                <th>Lieu</th>
+                <th>Lieu :</th>
                 <td>{{ event.lieu }}</td>
             </tr>
             <tr>
-                <th>Nbplace</th>
+                <th>Nombre de Place :</th>
                 <td>{{ event.nbPlace }}</td>
             </tr>
             <tr>
-                <th>Dtevent</th>
+                <th>Date Event :</th>
                 <td>{% if event.dtEvent %}{{ event.dtEvent|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Prix</th>
+                <th>Prix (dt) :</th>
                 <td>{{ event.prix }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th>Description :</th>
                 <td>{{ event.description }}</td>
             </tr>
             <tr>
-                <th>Etat</th>
+                <th>Etat :</th>
                 <td>{{ event.etat }}</td>
             </tr>
         </tbody>
@@ -57,4 +58,5 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+    </center>
 {% endblock %}

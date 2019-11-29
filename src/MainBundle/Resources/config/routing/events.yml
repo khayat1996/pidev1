@@ -22,3 +22,19 @@ events_delete:
     path:     /{idEv}/delete
     defaults: { _controller: "MainBundle:Events:delete" }
     methods:  DELETE
+
+events_search:
+    path:     /search
+    defaults: { _controller: "MainBundle:Events:search"}
+accueil:
+    path:     /accueil
+    defaults: { _controller: "MainBundle:Events:accueil" }
+inscription_page:
+    path:     /inscription
+    defaults: { _controller: "MainBundle:Events:inscription" }
+home_page:
+    path:     /home_page
+    defaults: { _controller: "MainBundle:Events:home" }
+admin:
+  path:     /admin
+  defaults: { _controller: "MainBundle:Events:admin" }

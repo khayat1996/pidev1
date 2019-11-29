@@ -3,6 +3,7 @@
 namespace MainBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +14,15 @@ class EventsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nomOrg')->add('nomEvent')->add('lieu')->add('nbPlace')->add('dtEvent')->add('prix')->add('description')->add('etat');
+        $builder->add('nomOrg')
+            ->add('nomEvent')
+            ->add('lieu')
+            ->add('nbPlace')
+            ->add('dtEvent')
+            ->add('prix')
+            ->add('description')
+            ->add('etat');
+
     }/**
      * {@inheritdoc}
      */

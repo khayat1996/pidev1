@@ -1,0 +1,38 @@
+{% block second %}
+    <h1>Créer un nouveau compte</h1>
+    <nav></nav>
+    <section>
+        <div class="container">
+            <div class="container">
+                <div class="container">
+                    <div class="container">
+                        <div class="container">
+                            <div>
+                                <div class="container">
+                                    <div class="container">
+                                        <div class="container">
+                                            <form>
+                                                {{ form_start(formInscription) }}
+
+                                                {{ form_row(formInscription.prenom,{'label' : 'Prenom','attr': {'placeholder' : "Prenom"}}) }}
+                                                {{ form_row(formInscription.nom,{'label' : 'Nom','attr': {'placeholder' : "Nom"}}) }}
+                                                {{ form_row(formInscription.sexe,{'label' : 'Sexe','attr': {'placeholder' : "Sexe"}}) }}
+                                                {{ form_row(formInscription.dateDeNaissance,{'label' : 'Date de naissance','attr': {'placeholder' : "Date de naissance "}}) }}
+                                                {{ form_row(formInscription.email,{'label' : 'Email','attr': {'placeholder' : "Email "}}) }}
+                                                {{ form_row(formInscription.password,{'label' : 'Mot de passe','attr': {'placeholder' : "Mot de passe"}}) }}
+                                                {{ form_row(formInscription.confirmPassword,{'label' : 'confirmer le mot passe ','attr': {'placeholder' : "Retapper le mot de passe "}}) }}
+
+                                                <button type="submit" class="btn btn-success">Enregistrer</button>
+                                                {{ form_end(formInscription) }}
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
