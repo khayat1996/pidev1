@@ -1,12 +1,14 @@
 
-{% extends 'base.html.twig' %}
-{% block second %}
+{% extends 'admin.html.twig' %}
+{% block body %}
 
     <center>
         <table border="1">
-    <h1>Event creation</h1>
-
+    <h1>Ajouter Un Nouveau Evenement</h1>
+            <br>
+            <br>
     {{ form_start(form) }}
+
          Nom Organisateur :* {{ form_widget(form.nomOrg) }}
             <br>
           Nom Event :* {{ form_widget(form.nomEvent) }}
@@ -24,6 +26,7 @@
             Etat :* {{ form_widget(form.etat) }}
             <br>
         <input type="submit" value="Create" />
+
     {{ form_end(form) }}
 
     <ul>
@@ -35,6 +38,6 @@
         </center>
 
 
-
+<
 
 {% endblock %}
