@@ -6,10 +6,6 @@ main_forum:
     resource: "@MainBundle/Controller/ForumController.php"
     type:     annotation
 
-main_forum:
-    resource: "@MainBundle/Controller/ForumController.php"
-    type:     annotation
-
 event_events:
     resource: "@MainBundle/Controller/EventsController.php"
     type:     annotation
