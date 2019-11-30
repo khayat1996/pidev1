@@ -1,23 +1,33 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block second %}
+
+{% block body %}
     <center>
     <h1>Event edit</h1>
-
+<table>
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+    <tr><td>Nom Organisateur :*</td><td>{{ form_widget(edit_form.nomOrg) }}</td></tr>
+    <tr><td>Nom Event :* </td><td>{{ form_widget(edit_form.nomEvent) }} </td></tr>
+    <tr><td>Lieu :* </td><td>{{ form_widget(edit_form.lieu) }} </td></tr>
+    <tr><td>nombre de place :* </td><td>{{ form_widget(edit_form.nbPlace) }} </td></tr>
+    <tr><td>Date Event :* </td><td>{{ form_widget(edit_form.dtEvent) }} </td></tr>
+    <tr><td>Prix(dt) :* </td><td>{{ form_widget(edit_form.prix) }} </td><tr>
+    <tr><td>Description :* </td><td>{{ form_widget(edit_form.description) }} </td><tr>
+    <tr><td>Etat :* </td><td>{{ form_widget(edit_form.etat) }} </td><tr>
+    <tr> <td><input type="submit" value="Edit"></td>
 
-    <ul>
-        <li>
-            <a href="{{ path('events_index') }}">Back to the list</a>
-        </li>
-        <li>
+    {{ form_end(edit_form) }}
+        <td>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        </td>
+        <td>
+            <a href="{{ path('events_index') }}" >Back to the list</a> </td>
+        </td>
+    </tr>
+</table>
     </center>
+
+
 {% endblock %}

@@ -3,38 +3,30 @@
 {% block body %}
 
     <center>
-        <table border="1">
-    <h1>Ajouter Un Nouveau Evenement</h1>
-            <br>
-            <br>
+        <h1>Ajouter Un Nouveau Evenement</h1>
+        <table >
+
+
     {{ form_start(form) }}
 
-         Nom Organisateur :* {{ form_widget(form.nomOrg) }}
-            <br>
-          Nom Event :* {{ form_widget(form.nomEvent) }}
-            <br>
-            Lieu :* {{ form_widget(form.lieu) }}
-            <br>
-            nombre de place :* {{ form_widget(form.nbPlace) }}
-            <br>
-             Date Event :* {{ form_widget(form.dtEvent) }}
-            <br>
-            Prix(dt) :* {{ form_widget(form.prix) }}
-            <br>
-            Description :* {{ form_widget(form.description) }}
-            <br>
-            Etat :* {{ form_widget(form.etat) }}
-            <br>
-        <input type="submit" value="Create" />
+            <tr><td>Nom Organisateur :*</td><td>{{ form_widget(form.nomOrg) }}</td></tr>
+            <tr><td>Nom Event :* </td><td>{{ form_widget(form.nomEvent) }} </td></tr>
+            <tr><td>Lieu :* </td><td>{{ form_widget(form.lieu) }} </td></tr>
+            <tr><td>nombre de place :* </td><td>{{ form_widget(form.nbPlace) }} </td></tr>
+            <tr><td>Date Event :* </td><td>{{ form_widget(form.dtEvent) }} </td></tr>
+            <tr><td>Prix(dt) :* </td><td>{{ form_widget(form.prix) }} </td><tr>
+            <tr><td>Description :* </td><td>{{ form_widget(form.description) }} </td><tr>
+            <tr><td>Etat :* </td><td>{{ form_widget(form.etat) }} </td><tr>
 
     {{ form_end(form) }}
-
+        </table>
+            <input type="submit" value="Create" />
     <ul>
         <li>
             <a href="{{ path('events_index') }}">Back to the list</a>
         </li>
     </ul>
-        </table>
+
         </center>
 
 
