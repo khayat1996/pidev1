@@ -1,6 +1,7 @@
 main_events:
     resource: "@MainBundle/Resources/config/routing/events.yml"
     prefix:   /event
-admin:
-    path:     /admin
-    defaults: { _controller: "MainBundle:Events:admin" }
+
+admin_page:
+    path:     /baseback
+    defaults: { _controller: "MainBundle:Events:baseback" }

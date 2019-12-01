@@ -1,9 +1,9 @@
-{% extends 'admin.html.twig' %}
+{% extends 'baseback.html.twig' %}
 
 {% block body %}
     <center>
     <h1>EVENTS</h1>
-    <table border="1">
+    <table border="1" width="1000">
         <thead>
             <tr>
 
@@ -16,6 +16,7 @@
                 <th>Description</th>
                 <th>Etat</th>
                 <th>Actions</th>
+                <th><center>Choix</center></th>
             </tr>
         </thead>
         <tbody>
@@ -38,6 +39,17 @@
                         <li>
                             <a href="{{ path('events_edit', { 'idEv': event.idEv }) }}">edit</a>
                         </li>
+                    </ul>
+                </td>
+                <td>
+                <ul>
+
+                            <input type="submit" class="btn btn-success" value="accepter">
+
+
+                            <input type="submit" class="btn btn-danger" value="refuser">
+
+
                     </ul>
                 </td>
             </tr>
@@ -82,6 +94,8 @@
                 "Sousse": { "lat": 35.824487, "lon": 10.634488},
                 "Touzer": { "lat": 33.918800, "lon": 8.122801 }
             };
+
+
             function initMap() {
                 var iconBase = 'http://localhost/carte/icons/';
                 // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
@@ -100,9 +114,33 @@
 
                     var marker = L.marker([villes[ville].lat, villes[ville].lon]).addTo(macarte);
                     marker.bindPopup(ville);
+
+
+
                 }
+                var popup = L.popup();
+
+                function onMapClick(e) {
+
+                    popup
+                        .setLatLng(e.latlng)
+                        .setContent("destination " + e.latlng.toString())
+                        .openOn(macarte);
+                }
+
+                macarte.on('click', onMapClick);
+                var baseMaps = {
+
+                };
+
+                var overlayMaps = {
+                };
+                L.control.layers(baseMaps, overlayMaps).addTo(macarte);
+
+
             }
                 window.onload = function(){
+
                 // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
                 initMap();
             };

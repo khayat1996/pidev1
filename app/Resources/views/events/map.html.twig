@@ -202,3 +202,12 @@
 
 </script>
 </body>
+
+-----------------
+macarte.on('locationfound',(locEvent) =>{
+var radius = locEvent.accuracy/2
+var point = locEvent.latlng
+macarte.setView(point, 16)
+L.circle(point,radius).addTo( macarte)
+
+})
