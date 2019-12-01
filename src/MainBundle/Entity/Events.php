@@ -225,8 +225,7 @@ class Events
      */
     public function __construct()
     {
-
-        $this->dtEvent = new \DateTime();
+        $this->dtEvent = new \DateTime('now');
     }
 
 }
