@@ -25,6 +25,7 @@ class EventsType extends AbstractType
             ->add('etat',ChoiceType::class, array(
         'choices'=> array(
             'Accepte'   => 'Accepte',
+            'En attente'   => 'En attente',
         ),));
 
     }/**

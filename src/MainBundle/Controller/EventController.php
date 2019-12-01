@@ -1,8 +1,9 @@
 <?php
 
 namespace MainBundle\Controller;
-
-use MainBundle\Entity\Event;
+use MainBundle\Form\EventType;
+use MainBundle\Form\EventsType;
+use MainBundle\Entity\Events;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -20,7 +21,7 @@ class EventController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $events = $em->getRepository('MainBundle:Event')->findAll();
+        $events = $em->getRepository('MainBundle:Events')->findAll();
 
         return $this->render('event/index.html.twig', array(
             'events' => $events,
@@ -33,7 +34,7 @@ class EventController extends Controller
      */
     public function newAction(Request $request)
     {
-        $event = new Event();
+        $event = new Events();
         $form = $this->createForm('MainBundle\Form\EventType', $event);
         $form->handleRequest($request);
 
@@ -55,7 +56,7 @@ class EventController extends Controller
      * Finds and displays a event entity.
      *
      */
-    public function showAction(Event $event)
+    public function showAction(Events $event)
     {
         $deleteForm = $this->createDeleteForm($event);
 
@@ -69,7 +70,7 @@ class EventController extends Controller
      * Displays a form to edit an existing event entity.
      *
      */
-    public function editAction(Request $request, Event $event)
+    public function editAction(Request $request, Events $event)
     {
         $deleteForm = $this->createDeleteForm($event);
         $editForm = $this->createForm('MainBundle\Form\EventType', $event);
@@ -78,7 +79,7 @@ class EventController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('event_edit', array('idEv' => $event->getIdev()));
+            return $this->redirectToRoute('event_show', array('idEv' => $event->getIdev()));
         }
 
         return $this->render('event/edit.html.twig', array(
@@ -92,7 +93,7 @@ class EventController extends Controller
      * Deletes a event entity.
      *
      */
-    public function deleteAction(Request $request, Event $event)
+    public function deleteAction(Request $request, Events $event)
     {
         $form = $this->createDeleteForm($event);
         $form->handleRequest($request);
@@ -109,11 +110,11 @@ class EventController extends Controller
     /**
      * Creates a form to delete a event entity.
      *
-     * @param Event $event The event entity
+     * @param Events $event The event entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Event $event)
+    private function createDeleteForm(Events $event)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('event_delete', array('idEv' => $event->getIdev())))
