@@ -141,26 +141,30 @@ class EventsController extends Controller
         return $this->render('events/search.html.twig', array("form"=> $form->createView(),"events" => $event));
 
     }
-
-    public function accueilAction(){
-
-        return $this->render("events/accueil.html.twig");
-    }
-
-    public function inscriptionAction(Request $request){
-
-
-        return $this->render("events/inscription.html.twig");
-    }
-    public function homeAction()
-    {
-        return $this->render("events/home.html.twig");
-    }
-
     public function basebackAction()
     {
         return $this->render("baseback.html.twig");
+
     }
+
+    public function accepterAction($idEv, Request $request)
+    {
+
+        $event = new Events();
+        $event->setEtat('accepter');
+
+        $em = $this->getDoctrine()->getManager();
+        $event = $em->getRepository(Events::class)->find($idEv);
+        $form = $this->createForm(EventsType::class, $event);
+        $form = $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($event);
+            $em->flush();
+        }
+        return $this->redirectToRoute('events_index', array('idEv' => $event->getIdev()));
+
+    }
+
 
 
 }
