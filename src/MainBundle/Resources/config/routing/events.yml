@@ -35,3 +35,9 @@ inscription_page:
 home_page:
     path:     /home_page
     defaults: { _controller: "MainBundle:Events:home" }
+admin:
+  path:     /admin
+  defaults: { _controller: "MainBundle:Events:admin" }
+
+
+
