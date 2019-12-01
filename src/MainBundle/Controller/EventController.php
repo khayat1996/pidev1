@@ -126,5 +126,10 @@ class EventController extends Controller
         return $this->render("organisateur.html.twig");
 
     }
+    public function participantAction()
+    {
+        return $this->render("participant.html.twig");
+
+    }
 
 }
