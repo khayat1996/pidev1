@@ -3,6 +3,7 @@
 namespace MainBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,7 +22,10 @@ class EventsType extends AbstractType
             ->add('dtEvent')
             ->add('prix')
             ->add('description')
-            ->add('etat');
+            ->add('etat',ChoiceType::class, array(
+        'choices'=> array(
+            'En Attent'   => 'En Attent',
+        ),));
 
     }/**
      * {@inheritdoc}

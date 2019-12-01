@@ -80,7 +80,7 @@ class EventsController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('events_edit', array('idEv' => $event->getIdev()));
+            return $this->redirectToRoute('events_show', array('idEv' => $event->getIdev()));
         }
 
         return $this->render('events/edit.html.twig', array(
@@ -160,4 +160,6 @@ class EventsController extends Controller
     {
         return $this->render("admin.html.twig");
     }
+
+
 }
