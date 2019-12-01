@@ -1,10 +1,10 @@
-{% extends 'baseback.html.twig' %}
+{% extends 'organisateur.html.twig' %}
 
 {% block body %}
     <center>
-    <h1>EVENTS</h1>
-    <table border="5" width="1000">
-        <thead>
+        <h1>EVENTS</h1>
+        <table border="5" width="1000">
+            <thead>
             <tr>
 
                 <th>Nom Organsiateur</th>
@@ -16,49 +16,39 @@
                 <th>Description</th>
                 <th>Etat</th>
                 <th>Actions</th>
-                <th><center>Choix</center></th>
             </tr>
-        </thead>
-        <tbody>
-        {% for event in events %}
-            <tr>
+            </thead>
+            <tbody>
+            {% for event in events %}
+                <tr>
 
-                <td>{{ event.nomOrg }}</td>
-                <td>{{ event.nomEvent }}</td>
-                <td>{{ event.lieu }}</td>
-                <td>{{ event.nbPlace }}</td>
-                <td>{% if event.dtEvent %}{{ event.dtEvent|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ event.prix }}</td>
-                <td>{{ event.description }}</td>
-                <td>{{ event.etat }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('events_show', { 'idEv': event.idEv }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('events_edit', { 'idEv': event.idEv }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-                <td>
-                <ul>
-                    <a class="btn btn-success" href="{{ path('accepter_page', { 'idEv': event.idEv }) }}" >Accepter</a>
+                    <td>{{ event.nomOrg }}</td>
+                    <td>{{ event.nomEvent }}</td>
+                    <td>{{ event.lieu }}</td>
+                    <td>{{ event.nbPlace }}</td>
+                    <td>{% if event.dtEvent %}{{ event.dtEvent|date('Y-m-d') }}{% endif %}</td>
+                    <td>{{ event.prix }}</td>
+                    <td>{{ event.description }}</td>
+                    <td>{{ event.etat }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('event_show', { 'idEv': event.idEv }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('event_edit', { 'idEv': event.idEv }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
 
-                    <a class="btn btn-danger" href="{{ path('events_edit', { 'idEv': event.idEv }) }}">Refuser</a>
-
-
-
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
         <br>
         <br>
-        <form action={{ path("events_new")}}>
-        <button>Create NEW</button>
+        <form action={{ path("event_new")}}>
+            <button>Create NEW</button>
         </form>
         <head>
             <meta charset="utf-8">
@@ -138,7 +128,7 @@
 
 
             }
-                window.onload = function(){
+            window.onload = function(){
 
                 // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
                 initMap();

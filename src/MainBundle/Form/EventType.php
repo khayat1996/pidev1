@@ -4,11 +4,10 @@ namespace MainBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class EventsType extends AbstractType
+class EventType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -23,11 +22,9 @@ class EventsType extends AbstractType
             ->add('prix')
             ->add('description')
             ->add('etat',ChoiceType::class, array(
-        'choices'=> array(
-            'Accepte'   => 'Accepte',
-            'En attente'   => 'En attente',
-        ),));
-
+                'choices'=> array(
+                    'En attente'   => 'En attente',
+                ),));
     }/**
      * {@inheritdoc}
      */
@@ -43,7 +40,7 @@ class EventsType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'mainbundle_events';
+        return 'mainbundle_event';
     }
 
 

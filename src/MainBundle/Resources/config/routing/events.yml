@@ -26,12 +26,8 @@ events_delete:
 events_search:
     path:     /search
     defaults: { _controller: "MainBundle:Events:search"}
-accueil:
-    path:     /accueil
-    defaults: { _controller: "MainBundle:Events:accueil" }
-inscription_page:
-    path:     /inscription
-    defaults: { _controller: "MainBundle:Events:inscription" }
-home_page:
-    path:     /home_page
-    defaults: { _controller: "MainBundle:Events:home" }
+
+accepter_page:
+    path:     /{idEv}/accepter
+    defaults: { _controller: "MainBundle:Events:accepter" }
+    methods:  [GET, POST]

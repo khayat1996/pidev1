@@ -1,9 +1,8 @@
 <?php
 
 namespace MainBundle\Controller;
-
+use MainBundle\Form\EventType;
 use MainBundle\Form\EventsType;
-use MainBundle\Form\RechercheType;
 use MainBundle\Entity\Events;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
  * Event controller.
  *
  */
-class EventsController extends Controller
+class EventController extends Controller
 {
     /**
      * Lists all event entities.
@@ -24,7 +23,7 @@ class EventsController extends Controller
 
         $events = $em->getRepository('MainBundle:Events')->findAll();
 
-        return $this->render('events/index.html.twig', array(
+        return $this->render('event/index.html.twig', array(
             'events' => $events,
         ));
     }
@@ -36,7 +35,7 @@ class EventsController extends Controller
     public function newAction(Request $request)
     {
         $event = new Events();
-        $form = $this->createForm('MainBundle\Form\EventsType', $event);
+        $form = $this->createForm('MainBundle\Form\EventType', $event);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -44,10 +43,10 @@ class EventsController extends Controller
             $em->persist($event);
             $em->flush();
 
-            return $this->redirectToRoute('events_show', array('idEv' => $event->getIdev()));
+            return $this->redirectToRoute('event_show', array('idEv' => $event->getIdev()));
         }
 
-        return $this->render('events/new.html.twig', array(
+        return $this->render('event/new.html.twig', array(
             'event' => $event,
             'form' => $form->createView(),
         ));
@@ -61,7 +60,7 @@ class EventsController extends Controller
     {
         $deleteForm = $this->createDeleteForm($event);
 
-        return $this->render('events/show.html.twig', array(
+        return $this->render('event/show.html.twig', array(
             'event' => $event,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -74,16 +73,16 @@ class EventsController extends Controller
     public function editAction(Request $request, Events $event)
     {
         $deleteForm = $this->createDeleteForm($event);
-        $editForm = $this->createForm('MainBundle\Form\EventsType', $event);
+        $editForm = $this->createForm('MainBundle\Form\EventType', $event);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('events_show', array('idEv' => $event->getIdev()));
+            return $this->redirectToRoute('event_show', array('idEv' => $event->getIdev()));
         }
 
-        return $this->render('events/edit.html.twig', array(
+        return $this->render('event/edit.html.twig', array(
             'event' => $event,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -105,7 +104,7 @@ class EventsController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('events_index');
+        return $this->redirectToRoute('event_index');
     }
 
     /**
@@ -118,53 +117,20 @@ class EventsController extends Controller
     private function createDeleteForm(Events $event)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('events_delete', array('idEv' => $event->getIdev())))
+            ->setAction($this->generateUrl('event_delete', array('idEv' => $event->getIdev())))
             ->setMethod('DELETE')
             ->getForm()
         ;
     }
-    public function searchAction(Request $request)
+    public function organisateurAction()
     {
-        $event = new Events();
-        $form = $this->createForm(RechercheType::class, $event);
-        $form = $form->handleRequest($request);
-        $nom = $request->get('search') ;
-        if ($form->isSubmitted()) {
-            $em= $this->getDoctrine()->getManager()->getRepository(Events::class);
-            $event= $em->find($event->getIdEv());
-
-        }
-        else
-        {
-            $event = $this->getDoctrine()->getRepository(Events::class)->findAll();
-        }
-        return $this->render('events/search.html.twig', array("form"=> $form->createView(),"events" => $event));
+        return $this->render("organisateur.html.twig");
 
     }
-    public function basebackAction()
+    public function participantAction()
     {
-        return $this->render("baseback.html.twig");
+        return $this->render("participant.html.twig");
 
     }
-
-    public function accepterAction($idEv, Request $request)
-    {
-
-        $event = new Events();
-        $event->setEtat('accepter');
-
-        $em = $this->getDoctrine()->getManager();
-        $event = $em->getRepository(Events::class)->find($idEv);
-        $form = $this->createForm(EventsType::class, $event);
-        $form = $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em->persist($event);
-            $em->flush();
-        }
-        return $this->redirectToRoute('events_index', array('idEv' => $event->getIdev()));
-
-    }
-
-
 
 }

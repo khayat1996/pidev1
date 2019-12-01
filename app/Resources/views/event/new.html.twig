@@ -1,5 +1,5 @@
+{% extends 'organisateur.html.twig' %}
 
-{% extends 'baseback.html.twig' %}
 {% block body %}
 
     <center>
@@ -8,7 +8,7 @@
 
             <br>
             <br>
-    {{ form_start(form) }}
+            {{ form_start(form) }}
 
             <tr><td>Nom Organisateur :*</td><td>{{ form_widget(form.nomOrg) }}</td></tr>
             <tr><td>Nom Event :* </td><td>{{ form_widget(form.nomEvent) }} </td></tr>
@@ -18,17 +18,17 @@
             <tr><td>Prix(dt) :* </td><td>{{ form_widget(form.prix) }} </td><tr>
             <tr><td>Description :* </td><td>{{ form_widget(form.description) }} </td><tr>
             <tr><td>Etat :* </td><td>{{ form_widget(form.etat) }} </td><tr>
-           <td> <input type="submit" value="Create" /></td>
+                <td> <input type="submit" value="Create" /></td>
 
-    {{ form_end(form) }}
+                {{ form_end(form) }}
         </table>
-    <ul>
-        <li>
-            <a href="{{ path('events_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        <ul>
+            <li>
+                <a href="{{ path('event_index') }}">Back to the list</a>
+            </li>
+        </ul>
 
-        </center>
+    </center>
 
 
 {% endblock %}
