@@ -220,7 +220,14 @@ class Events
     {
         $this->etat = $etat;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
 
+        $this->dtEvent = new \DateTime();
+    }
 
 }
 
