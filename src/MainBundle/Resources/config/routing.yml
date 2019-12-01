@@ -4,3 +4,4 @@ main_events:
 admin:
     path:     /admin
     defaults: { _controller: "MainBundle:Events:admin" }
+
