@@ -15,7 +15,7 @@
                 <th>Prix (dt)</th>
                 <th>Description</th>
                 <th>Etat</th>
-                <th>Actions</th>
+                <th><center>Actions</center></th>
             </tr>
             </thead>
             <tbody>
@@ -32,12 +32,11 @@
                     <td>{{ event.etat }}</td>
                     <td>
                         <ul>
-                            <li>
-                                <a href="{{ path('event_show', { 'idEv': event.idEv }) }}">show</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('event_edit', { 'idEv': event.idEv }) }}">edit</a>
-                            </li>
+
+                                <a class="btn btn-info" href="{{ path('event_show', { 'idEv': event.idEv }) }}">show</a>
+
+                                <a class="btn btn-dark" href="{{ path('event_edit', { 'idEv': event.idEv }) }}">edit</a>
+
                         </ul>
                     </td>
 
@@ -46,10 +45,11 @@
             </tbody>
         </table>
         <br>
-        <br>
+
         <form action={{ path("event_new")}}>
-            <button>Create NEW</button>
+            <button class="btn btn-info">Create NEW</button>
         </form>
+        <br>
         <head>
             <meta charset="utf-8">
             <!-- Nous chargeons les fichiers CDN de Leaflet. Le CSS AVANT le JS -->

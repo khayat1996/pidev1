@@ -4,7 +4,7 @@
     <center>
         <h1>Event</h1>
 
-        <table border="1" width="500" >
+        <table border="5" width="600" >
             <tbody>
 
             <tr>
@@ -44,13 +44,13 @@
 
         <ul>
 
-            <a href="{{ path('event_index') }}">Back to the list</a>
+            <a  href="{{ path('event_index') }}">Back to the list</a>
             <br>
 
-            <a href="{{ path('event_edit', { 'idEv': event.idEv }) }}">Edit</a>
+            <a class="btn btn-info" href="{{ path('event_edit', { 'idEv': event.idEv }) }}">Modifier</a>
 
             {{ form_start(delete_form) }}
-            <input type="submit" value="Delete">
+            <input type="submit" value="Delete" class="btn btn-danger">
             {{ form_end(delete_form) }}
 
         </ul>

@@ -13,16 +13,16 @@
                 <tr><td>Prix(dt) :* </td><td>{{ form_widget(edit_form.prix) }} </td><tr>
                 <tr><td>Description :* </td><td>{{ form_widget(edit_form.description) }} </td><tr>
                 <tr><td>Etat :* </td><td>{{ form_widget(edit_form.etat) }} </td><tr>
-                <tr> <td><input type="submit" value="Edit"></td>
+                <tr> <td><input type="submit" value="Enregistre" class="btn btn-outline-success"></td>
 
                     {{ form_end(edit_form) }}
                     <td>
                         {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
+                        <input type="submit" value="Delete" class="btn btn-outline-danger">
                         {{ form_end(delete_form) }}
                     </td>
                     <td>
-                        <a href="{{ path('event_index') }}" >Back to the list</a> </td>
+                        <a class="btn btn-outline-info" href="{{ path('event_index') }}" >Back to the list</a> </td>
                     </td>
                 </tr>
             </table>
