@@ -14,12 +14,12 @@
                 <th>Date Event</th>
                 <th>Prix (dt)</th>
                 <th>Description</th>
-                <th>Etat</th>
                 <th><center>Actions</center></th>
             </tr>
             </thead>
             <tbody>
             {% for event in events %}
+                {% if event.etat=='Accepte' %}
                 <tr>
 
                     <td>{{ event.nomOrg }}</td>
@@ -29,25 +29,25 @@
                     <td>{% if event.dtEvent %}{{ event.dtEvent|date('Y-m-d') }}{% endif %}</td>
                     <td>{{ event.prix }}</td>
                     <td>{{ event.description }}</td>
-                    <td>{{ event.etat }}</td>
                     <td>
                         <ul>
 
-                                <a class="btn btn-info" href="{{ path('event_show', { 'idEv': event.idEv }) }}">show</a>
+                                <a class="btn btn-outline-info" href="{{ path('event_show', { 'idEv': event.idEv }) }}">show</a>
 
-                                <a class="btn btn-dark" href="{{ path('event_edit', { 'idEv': event.idEv }) }}">edit</a>
+                                <a class="btn btn-outline-dark" href="{{ path('event_edit', { 'idEv': event.idEv }) }}">edit</a>
 
                         </ul>
                     </td>
 
                 </tr>
+                {% endif %}
             {% endfor %}
             </tbody>
         </table>
         <br>
 
         <form action={{ path("event_new")}}>
-            <button class="btn btn-info">Create NEW</button>
+            <button class="btn btn-outline-info">Create NEW</button>
         </form>
         <br>
         <head>

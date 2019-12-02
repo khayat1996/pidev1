@@ -34,19 +34,22 @@
                 <td>
                     <ul>
 
-                            <a class="btn btn-info" href="{{ path('events_show', { 'idEv': event.idEv }) }}">show</a>
+                            <a class="btn btn-outline-info" href="{{ path('events_show', { 'idEv': event.idEv }) }}">show</a>
 
-                            <a class="btn btn-dark" href="{{ path('events_edit', { 'idEv': event.idEv }) }}">edit</a>
+                            <a class="btn btn-outline-dark" href="{{ path('events_edit', { 'idEv': event.idEv }) }}">edit</a>
 
                     </ul>
                 </td>
                 <td>
                 <ul>
+                    {% if event.etat=='En attente' %}
                     <a class="btn btn-outline-success" href="{{ path('accepter_page', { 'idEv': event.idEv }) }}" >Accepter</a>
 
                     <a class="btn btn-outline-danger" href="{{ path('refuser_page', { 'idEv': event.idEv }) }}">Refuser</a>
+                    {% else  %}
+                        <a class="btn btn-outline-danger" href="{{ path('events_delete', { 'idEv': event.idEv }) }}">Delete</a>
 
-
+                    {% endif %}
 
                     </ul>
                 </td>
@@ -57,7 +60,7 @@
 
         <br>
         <form action={{ path("events_new")}}>
-        <button class="btn btn-info">Create NEW</button>
+        <button class="btn btn-outline-info">Create NEW</button>
         </form>
         <br>
         <head>
