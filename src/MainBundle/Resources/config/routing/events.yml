@@ -31,3 +31,8 @@ accepter_page:
     path:     /{idEv}/accepter
     defaults: { _controller: "MainBundle:Events:accepter" }
     methods:  [GET, POST]
+
+refuser_page:
+    path:     /{idEv}/refuser
+    defaults: { _controller: "MainBundle:Events:refuser" }
+    methods:  [GET, POST]

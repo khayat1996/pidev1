@@ -150,21 +150,23 @@ class EventsController extends Controller
     public function accepterAction($idEv, Request $request)
     {
 
-        $event = new Events();
-        $event->setEtat('accepter');
 
         $em = $this->getDoctrine()->getManager();
-        $event = $em->getRepository(Events::class)->find($idEv);
-        $form = $this->createForm(EventsType::class, $event);
-        $form = $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em->persist($event);
-            $em->flush();
-        }
+        $event = $this->getDoctrine()->getRepository(Events::class)->find($idEv);
+        $event->setEtat("Accepter");
+        $em->persist($event);
+        $em->flush();
         return $this->redirectToRoute('events_index', array('idEv' => $event->getIdev()));
+}
+    public function refuserAction($idEv, Request $request)
+    {
 
+
+        $em = $this->getDoctrine()->getManager();
+        $event = $this->getDoctrine()->getRepository(Events::class)->find($idEv);
+        $event->setEtat("refuser");
+        $em->persist($event);
+        $em->flush();
+        return $this->redirectToRoute('events_index', array('idEv' => $event->getIdev()));
     }
-
-
-
 }
