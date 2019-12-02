@@ -35,6 +35,54 @@ class Note
      */
     private $note;
 
+    /**
+     * @return int
+     */
+    public function getIdNote()
+    {
+        return $this->idNote;
+    }
+
+    /**
+     * @param int $idNote
+     */
+    public function setIdNote($idNote)
+    {
+        $this->idNote = $idNote;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdEv()
+    {
+        return $this->idEv;
+    }
+
+    /**
+     * @param int $idEv
+     */
+    public function setIdEv($idEv)
+    {
+        $this->idEv = $idEv;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param int $note
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+    }
+
 
 }
 

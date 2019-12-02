@@ -56,6 +56,102 @@ class Reservation
      */
     private $image;
 
+    /**
+     * @return int
+     */
+    public function getIdTicket()
+    {
+        return $this->idTicket;
+    }
+
+    /**
+     * @param int $idTicket
+     */
+    public function setIdTicket($idTicket)
+    {
+        $this->idTicket = $idTicket;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdEv()
+    {
+        return $this->idEv;
+    }
+
+    /**
+     * @param int $idEv
+     */
+    public function setIdEv($idEv)
+    {
+        $this->idEv = $idEv;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdPar()
+    {
+        return $this->idPar;
+    }
+
+    /**
+     * @param int $idPar
+     */
+    public function setIdPar($idPar)
+    {
+        $this->idPar = $idPar;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param string $nom
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * @param string $prenom
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
 
 }
 
