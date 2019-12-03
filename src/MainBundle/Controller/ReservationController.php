@@ -103,7 +103,7 @@ class ReservationController extends Controller
     /**
      * Deletes a reservation entity.
      *
-     * @Route("/{idTicket}/delete", name="reservation_delete")
+     * @Route("/", name="reservation_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Reservation $reservation)

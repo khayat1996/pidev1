@@ -29,6 +29,7 @@ class Reservation
     private $idEv;
 
     /**
+
      * @var integer
      *
      * @ORM\Column(name="id_par", type="integer", nullable=false)

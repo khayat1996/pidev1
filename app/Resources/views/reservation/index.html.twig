@@ -1,47 +1,156 @@
 {% extends 'base.html.twig' %}
 
+
 {% block body %}
-    <h1>Reservations list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Idticket</th>
-                <th>Idev</th>
-                <th>Idpar</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Image</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for reservation in reservations %}
-            <tr>
-                <td><a href="{{ path('reservation_show', { 'idTicket': reservation.idTicket }) }}">{{ reservation.idTicket }}</a></td>
-                <td>{{ reservation.idEv }}</td>
-                <td>{{ reservation.idPar }}</td>
-                <td>{{ reservation.nom }}</td>
-                <td>{{ reservation.prenom }}</td>
-                <td>{{ reservation.image }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('reservation_show', { 'idTicket': reservation.idTicket }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('reservation_edit', { 'idTicket': reservation.idTicket }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('reservation_new') }}">Create a new reservation</a>
-        </li>
-    </ul>
+
+    <!------ Include the above in your HEAD tag ---------->
+    {% set id=app.user.id %}
+
+
+
+    <div class="container">
+        <h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Developers</h3>
+                        <div class="pull-right">
+							<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+								<i class="glyphicon glyphicon-filter"></i>
+							</span>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Developers" />
+                    </div>
+                    <table class="table table-hover" id="dev-table">
+                        <thead>
+                        <tr>
+                        <tr>
+                            <th>Idticket</th>
+                            <th>Idev</th>
+                            <th>Idpar</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Image</th>
+                            <th>Actions</th>
+                            <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
+                            </th>
+                        </tr>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for reservation in reservations %}
+                            <tr>
+                                <td><a href="{{ path('reservation_show', { 'idTicket': reservation.idTicket }) }}">{{ reservation.idTicket }}</a></td>
+                                <td>{{ reservation.idEv }}</td>
+                                <td>{{ reservation.idPar }}</td>
+                                <td>{{ reservation.nom }}</td>
+                                <td>{{ reservation.prenom }}</td>
+                                <td>{{ reservation.image }}</td>
+
+                                <td>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ path('reservation_show', { 'idTicket': reservation.idTicket }) }}">show</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('reservation_delete', { 'idTicket': reservation.idTicket }) }}">delete</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td data-name="del">
+                                    <button name="del0" href="{{ path('reservation_delete', { 'idTicket': reservation.idTicket }) }}" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">×</span>
+                                    </button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css')  }}">
+
+    .row{
+    margin-top:40px;
+    padding: 0 10px;
+    }
+    .clickable{
+    cursor: pointer;
+    }
+
+    .panel-heading div {
+    margin-top: -18px;
+    font-size: 15px;
+    }
+    .panel-heading div span{
+    margin-left:5px;
+    }
+    .panel-body{
+    display: none;
+    }
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('//code.jquery.com/jquery-1.11.1.min.js') }}"></script>
+    <script language="JavaScript" type="text/javascript" >
+        (function(){
+            'use strict';
+            var $ = jQuery;
+            $.fn.extend({
+                filterTable: function(){
+                    return this.each(function(){
+                        $(this).on('keyup', function(e){
+                            $('.filterTable_no_results').remove();
+                            var $this = $(this),
+                                search = $this.val().toLowerCase(),
+                                target = $this.attr('data-filters'),
+                                $target = $(target),
+                                $rows = $target.find('tbody tr');
+
+                            if(search == '') {
+                                $rows.show();
+                            } else {
+                                $rows.each(function(){
+                                    var $this = $(this);
+                                    $this.text().toLowerCase().indexOf(search) === -1 ? $this.hide() : $this.show();
+                                })
+                                if($target.find('tbody tr:visible').size() === 0) {
+                                    var col_count = $target.find('tr').first().find('td').size();
+                                    var no_results = $('<tr class="filterTable_no_results"><td colspan="'+col_count+'">No results found</td></tr>')
+                                    $target.find('tbody').append(no_results);
+                                }
+                            }
+                        });
+                    });
+                }
+            });
+            $('[data-action="filter"]').filterTable();
+        })(jQuery);
+
+        $(function(){
+            // attach table filter plugin to inputs
+            $('[data-action="filter"]').filterTable();
+
+            $('.container').on('click', '.panel-heading span.filter', function(e){
+                var $this = $(this),
+                    $panel = $this.parents('.panel');
+
+                $panel.find('.panel-body').slideToggle();
+                if($this.css('display') != 'none') {
+                    $panel.find('.panel-body input').focus();
+                }
+            });
+            $('[data-toggle="tooltip"]').tooltip();
+        })
+    </script>
 {% endblock %}
