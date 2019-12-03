@@ -3,6 +3,7 @@
 namespace MainBundle\Controller;
 
 use MainBundle\Form\EventsType;
+use MainBundle\Entity\Note;
 use MainBundle\Form\RechercheType;
 use MainBundle\Entity\Events;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -24,8 +25,10 @@ class EventsController extends Controller
 
         $events = $em->getRepository('MainBundle:Events')->findAll();
 
+
         return $this->render('events/index.html.twig', array(
             'events' => $events,
+
         ));
     }
 
@@ -169,4 +172,5 @@ class EventsController extends Controller
         $em->flush();
         return $this->redirectToRoute('events_index', array('idEv' => $event->getIdev()));
     }
+
 }

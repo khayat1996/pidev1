@@ -5,9 +5,6 @@ main_commentaire:
 main_forum:
     resource: "@MainBundle/Controller/ForumController.php"
     type:     annotation
-main_note:
-    resource: "@MainBundle/Controller/NoteController.php"
-    type:     annotation
 
 event_event:
     resource: "@MainBundle/Controller/EventController.php"
