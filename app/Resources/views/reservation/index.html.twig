@@ -9,7 +9,6 @@
     {% set id=app.user.id %}
 
 
-
     <div class="container">
         <h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>
         <div class="row">
@@ -41,6 +40,7 @@
                             </th>
                         </tr>
                         </tr>
+
                         </thead>
                         <tbody>
                         {% for reservation in reservations %}
@@ -52,19 +52,9 @@
                                 <td>{{ reservation.prenom }}</td>
                                 <td>{{ reservation.image }}</td>
 
-                                <td>
-                                    <ul>
-                                        <li>
-                                            <a href="{{ path('reservation_show', { 'idTicket': reservation.idTicket }) }}">show</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ path('reservation_delete', { 'idTicket': reservation.idTicket }) }}">delete</a>
-                                        </li>
-                                    </ul>
-                                </td>
+
                                 <td data-name="del">
-                                    <button name="del0" href="{{ path('reservation_delete', { 'idTicket': reservation.idTicket }) }}" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">×</span>
-                                    </button>
+                                    <a href="{{ path('reservation_delete',{'id': reservation.idTicket }) }}" class="btn btn-primary">Delete</a>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -76,32 +66,11 @@
         </div>
     </div>
 {% endblock %}
-{% block stylesheets %}
-    <link href="{{ asset('//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css')  }}">
 
-    .row{
-    margin-top:40px;
-    padding: 0 10px;
-    }
-    .clickable{
-    cursor: pointer;
-    }
-
-    .panel-heading div {
-    margin-top: -18px;
-    font-size: 15px;
-    }
-    .panel-heading div span{
-    margin-left:5px;
-    }
-    .panel-body{
-    display: none;
-    }
-
-{% endblock %}
 {% block javascripts %}
     <script src="{{ asset('//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('//code.jquery.com/jquery-1.11.1.min.js') }}"></script>
+
     <script language="JavaScript" type="text/javascript" >
         (function(){
             'use strict';
@@ -154,3 +123,28 @@
         })
     </script>
 {% endblock %}
+ {% block stylesheets %}
+     <link href="{{ asset('//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css')  }}">
+
+     <style>
+
+     .row{
+     margin-top:40px;
+     padding: 0 10px;
+     }
+     .clickable{
+     cursor: pointer;
+     }
+
+     .panel-heading div {
+     margin-top: -18px;
+     font-size: 15px;
+     }
+     .panel-heading div span{
+     margin-left:5px;
+     }
+     .panel-body{
+     display: none;
+     }
+    </style>
+ {% endblock %}

@@ -15,7 +15,6 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ asset('FrontTemp/style.css') }}">
-{% block stylesheets %}{% endblock %}
 </head>
 
 <body>
@@ -30,6 +29,7 @@
     <div class="classy-nav-container breakpoint-off">
         <div class="container">
             <!-- Classy Menu -->
+
             <nav class="classy-navbar justify-content-between" id="conferNav">
 
                 <!-- Logo -->
@@ -47,6 +47,7 @@
                         <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                     </div>
                     <!-- Nav Start -->
+
                     <div class="classynav">
                         <ul id="nav">
                             <li class="active"><a href="index.html">Home</a></li>
@@ -79,20 +80,25 @@
                         <a href="#" class="btn confer-btn mt-3 mt-lg-0 ml-3 ml-lg-5">Get Tickets <i class="zmdi zmdi-long-arrow-right"></i></a>
                     </div>
                     <!-- Nav End -->
+
                 </div>
             </nav>
         </div>
     </div>
 </header>
+
 <!-- Header Area End -->
 
 <!-- Welcome Area Start -->
 
 <section class="welcome-area">
 
+
     <div class="welcome-slides owl-carousel">
         <!-- Single Slide -->
+
         <div class="single-welcome-slide bg-img bg-overlay jarallax" style="background-image: url({{ asset('FrontTemp/img/bg-img/1.jpg') }});">
+
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <!-- Welcome Text -->
@@ -122,6 +128,7 @@
         <!-- Single Slide -->
 
         <div class="single-welcome-slide bg-img bg-overlay jarallax" style="background-image: url({{ asset('FrontTemp/img/bg-img/45.jpg') }});">
+
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <!-- Welcome Text -->
@@ -147,6 +154,9 @@
 
     <!-- Scroll Icon -->
     <div class="icon-scroll" id="scrollDown"></div>
+    {% block body %}
+
+    {% endblock %}
 </section>
 <!-- Welcome Area End -->
 
@@ -173,9 +183,7 @@
             </div>
         </div>
     </div>
-    {% block body %}
 
-    {% endblock %}
     <!-- Counter Up Area -->
     <div class="countdown-up-area">
         <div class="container">
