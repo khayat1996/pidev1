@@ -4,54 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3104cd25a5c29150d8f9efa5717ae8f0",
+    "content-hash": "9fd984866661f9b7d66a04d224986088",
     "packages": [
-        {
-            "name": "Carpe-Hora/SmsSender",
-            "version": "1.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Carpe-Hora/SmsSender.git",
-                "reference": "816acb815777911ce9ed51299d9e58bad711ca62"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Carpe-Hora/SmsSender/zipball/816acb815777911ce9ed51299d9e58bad711ca62",
-                "reference": "816acb815777911ce9ed51299d9e58bad711ca62",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "kriswallsmith/buzz": "*",
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "SmsSender": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kévin Gomez",
-                    "email": "contact@kevingomez.fr"
-                }
-            ],
-            "description": "The almost missing SMS sending PHP 5.3 library.",
-            "homepage": "http://github.com/Carpe-Hora/SmsSender",
-            "keywords": [
-                "abstraction",
-                "sms"
-            ],
-            "abandoned": true,
-            "time": "2014-10-20T07:10:58+00:00"
-        },
         {
             "name": "composer/ca-bundle",
             "version": "1.2.4",
@@ -1308,55 +1262,6 @@
                 "sql"
             ],
             "time": "2014-01-12T16:20:24+00:00"
-        },
-        {
-            "name": "kphoen/sms-sender-bundle",
-            "version": "1.3.0",
-            "target-dir": "KPhoen/SmsSenderBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/K-Phoen/KPhoenSmsSenderBundle.git",
-                "reference": "9fd180d0a6514d3758a3b415c9d5646e605527f3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/K-Phoen/KPhoenSmsSenderBundle/zipball/9fd180d0a6514d3758a3b415c9d5646e605527f3",
-                "reference": "9fd180d0a6514d3758a3b415c9d5646e605527f3",
-                "shasum": ""
-            },
-            "require": {
-                "carpe-hora/smssender": "~1.4.0",
-                "psr/log": "~1.0",
-                "symfony/framework-bundle": ">=2.1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~3.7.0",
-                "symfony/symfony": ">=2.1.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "KPhoen\\SmsSenderBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kévin Gomez",
-                    "email": "contact@kevingomez.fr",
-                    "homepage": "http://www.kevingomez.fr/"
-                }
-            ],
-            "description": "Integrates the SmsSender library in Symfony2 applications",
-            "keywords": [
-                "abstraction",
-                "sms"
-            ],
-            "abandoned": true,
-            "time": "2014-10-21T07:27:06+00:00"
         },
         {
             "name": "lcobucci/jwt",
@@ -2873,16 +2778,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v3.4.35",
+            "version": "v3.4.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "2adc85d49cbe14e346068fa7e9c2e1f08ab31de6"
+                "reference": "0a6fccb5772ad2467253e6849d589bd09d9eb195"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/2adc85d49cbe14e346068fa7e9c2e1f08ab31de6",
-                "reference": "2adc85d49cbe14e346068fa7e9c2e1f08ab31de6",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/0a6fccb5772ad2467253e6849d589bd09d9eb195",
+                "reference": "0a6fccb5772ad2467253e6849d589bd09d9eb195",
                 "shasum": ""
             },
             "require": {
@@ -2904,6 +2809,7 @@
                 "twig/twig": "^1.41|^2.10"
             },
             "conflict": {
+                "monolog/monolog": ">=2",
                 "phpdocumentor/reflection-docblock": "<3.0||>=3.2.0,<3.2.2",
                 "phpdocumentor/type-resolver": "<0.3.0",
                 "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
@@ -3024,7 +2930,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2019-11-13T08:45:05+00:00"
+            "time": "2019-12-01T13:50:53+00:00"
         },
         {
             "name": "twig/twig",
@@ -3207,6 +3113,101 @@
     ],
     "packages-dev": [
         {
+            "name": "Carpe-Hora/SmsSender",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Carpe-Hora/SmsSender.git",
+                "reference": "816acb815777911ce9ed51299d9e58bad711ca62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Carpe-Hora/SmsSender/zipball/816acb815777911ce9ed51299d9e58bad711ca62",
+                "reference": "816acb815777911ce9ed51299d9e58bad711ca62",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "kriswallsmith/buzz": "*",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "SmsSender": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kévin Gomez",
+                    "email": "contact@kevingomez.fr"
+                }
+            ],
+            "description": "The almost missing SMS sending PHP 5.3 library.",
+            "homepage": "http://github.com/Carpe-Hora/SmsSender",
+            "keywords": [
+                "abstraction",
+                "sms"
+            ],
+            "abandoned": true,
+            "time": "2014-10-20T07:10:58+00:00"
+        },
+        {
+            "name": "kphoen/sms-sender-bundle",
+            "version": "1.3.0",
+            "target-dir": "KPhoen/SmsSenderBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/K-Phoen/KPhoenSmsSenderBundle.git",
+                "reference": "9fd180d0a6514d3758a3b415c9d5646e605527f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/K-Phoen/KPhoenSmsSenderBundle/zipball/9fd180d0a6514d3758a3b415c9d5646e605527f3",
+                "reference": "9fd180d0a6514d3758a3b415c9d5646e605527f3",
+                "shasum": ""
+            },
+            "require": {
+                "carpe-hora/smssender": "~1.4.0",
+                "psr/log": "~1.0",
+                "symfony/framework-bundle": ">=2.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7.0",
+                "symfony/symfony": ">=2.1.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "KPhoen\\SmsSenderBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kévin Gomez",
+                    "email": "contact@kevingomez.fr",
+                    "homepage": "http://www.kevingomez.fr/"
+                }
+            ],
+            "description": "Integrates the SmsSender library in Symfony2 applications",
+            "keywords": [
+                "abstraction",
+                "sms"
+            ],
+            "abandoned": true,
+            "time": "2014-10-21T07:27:06+00:00"
+        },
+        {
             "name": "sensio/generator-bundle",
             "version": "v3.1.7",
             "source": {
@@ -3324,6 +3325,52 @@
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
             "time": "2019-09-30T20:33:19+00:00"
+        },
+        {
+            "name": "vresh/twilio-bundle",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fridolin-koch/VreshTwilioBundle.git",
+                "reference": "6e7f2820a8cd0e5a57ad253b311f9e5259a33320"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fridolin-koch/VreshTwilioBundle/zipball/6e7f2820a8cd0e5a57ad253b311f9e5259a33320",
+                "reference": "6e7f2820a8cd0e5a57ad253b311f9e5259a33320",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": "~2.1|~3.0",
+                "twilio/sdk": ">=4.0.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.1",
+                "satooshi/php-coveralls": "~1.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Vresh\\TwilioBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fridolin Koch",
+                    "email": "info@fridokoch.de"
+                }
+            ],
+            "description": "A simple Symfony 2, 3 bundle for the official sdk provided by Twilio.",
+            "homepage": "https://github.com/fridolin-koch/VreshTwilioBundle",
+            "keywords": [
+                "twilio"
+            ],
+            "time": "2016-06-14T11:51:28+00:00"
         }
     ],
     "aliases": [],

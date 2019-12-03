@@ -41,7 +41,6 @@ class Media
      * @ORM\Column(name="date_create", type="date", nullable=true)
      */
     private $dateCreate ;
-
     /**
      * @return int
      */
