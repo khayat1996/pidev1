@@ -16,7 +16,7 @@ organisateur_page:
     path:     /org
     defaults: { _controller: "MainBundle:Event:organisateur" }
 participant_page:
-    path:     /part
+    path:     /parti
     defaults: { _controller: "MainBundle:Event:participant" }
 
 
