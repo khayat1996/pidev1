@@ -1,0 +1,22 @@
+{% extends 'baseback.html.twig' %}
+
+{% block body %}
+        <center>
+            <h1>Medium creation</h1>
+            <table>
+                <br>
+                {{ form_start(form) }}
+                <tr><td>Name :* </td><td>{{ form_widget(form.name) }} </td><tr>
+                <tr><td>Type :* </td><td>{{ form_widget(form.type) }} </td><tr>
+                <tr><td>Date de Creation :* </td><td>{{ form_widget(form.dateCreate) }} </td><tr>
+                    <td> <input type="submit" value="Create" class="btn btn-outline-success" /></td>
+                    {{ form_end(form) }}
+            </table>
+            <ul>
+                <li>
+                    <a class="btn btn-outline-info" href="{{ path('media_index') }}">Back to the list</a>
+                </li>
+            </ul>
+
+        </center>
+{% endblock %}

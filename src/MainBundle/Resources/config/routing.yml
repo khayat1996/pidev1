@@ -4,6 +4,9 @@ main_events:
 main_event:
     resource: "@MainBundle/Resources/config/routing/event.yml"
     prefix:   /events
+main_media:
+    resource: "@MainBundle/Resources/config/routing/media.yml"
+    prefix:   /media
 
 admin_page:
     path:     /admin
