@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="sms.provider.esendex" class="SmsSender\Provider\EsendexProvider" public="false">
+            <argument type="service" id="sms.http_adapter" />
+            <!-- username -->
+            <argument></argument>
+            <!-- password -->
+            <argument></argument>
+            <!-- accountRef -->
+            <argument></argument>
+        </service>
+
+        <service id="sms.provider.nexmo" class="SmsSender\Provider\NexmoProvider" public="false">
+            <argument type="service" id="sms.http_adapter" />
+            <!-- API key -->
+            <argument></argument>
+            <!-- API secret -->
+            <argument></argument>
+            <!-- international prefix -->
+            <argument></argument>
+        </service>
+
+        <service id="sms.provider.twilio" class="SmsSender\Provider\TwilioProvider" public="false">
+            <argument type="service" id="sms.http_adapter" />
+            <!-- accountSid -->
+            <argument></argument>
+            <!-- API secret -->
+            <argument></argument>
+            <!-- international prefix -->
+            <argument></argument>
+        </service>
+
+        <service id="sms.provider.cardboardfish" class="SmsSender\Provider\CardboardfishProvider" public="false">
+            <argument type="service" id="sms.http_adapter" />
+            <!-- username -->
+            <argument></argument>
+            <!-- password -->
+            <argument></argument>
+        </service>
+
+        <service id="sms.provider.valuefirst" class="SmsSender\Provider\ValueFirstProvider" public="false">
+            <argument type="service" id="sms.http_adapter" />
+            <!-- username -->
+            <argument></argument>
+            <!-- password -->
+            <argument></argument>
+        </service>
+
+        <service id="sms.provider.swisscom" class="SmsSender\Provider\SwisscomProvider" public="false">
+            <argument type="service" id="sms.http_adapter" />
+            <!-- Client id -->
+            <argument></argument>
+            <!-- international prefix -->
+            <argument></argument>
+        </service>
+
+        <service id="sms.provider.websms" class="SmsSender\Provider\WebsmsProvider" public="false">
+            <argument type="service" id="sms.http_adapter" />
+            <!-- Access token -->
+            <argument></argument>
+            <!-- International prefix -->
+            <argument></argument>
+        </service>
+
+        <service id="sms.provider.dummy" class="SmsSender\Provider\DummyProvider" public="false">
+        </service>
+    </services>
+
+</container>

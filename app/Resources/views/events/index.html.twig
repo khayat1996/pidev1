@@ -31,22 +31,26 @@
                 <td>{{ event.prix }}</td>
                 <td>{{ event.description }}</td>
                 <td>{{ event.etat }}</td>
+
                 <td>
                     <ul>
 
-                            <a class="btn btn-info" href="{{ path('events_show', { 'idEv': event.idEv }) }}">show</a>
+                            <a class="btn btn-outline-info" href="{{ path('events_show', { 'idEv': event.idEv }) }}">show</a>
 
-                            <a class="btn btn-dark" href="{{ path('events_edit', { 'idEv': event.idEv }) }}">edit</a>
+                            <a class="btn btn-outline-dark" href="{{ path('events_edit', { 'idEv': event.idEv }) }}">edit</a>
 
                     </ul>
                 </td>
                 <td>
                 <ul>
+                    {% if event.etat=='En attente' %}
                     <a class="btn btn-outline-success" href="{{ path('accepter_page', { 'idEv': event.idEv }) }}" >Accepter</a>
 
                     <a class="btn btn-outline-danger" href="{{ path('refuser_page', { 'idEv': event.idEv }) }}">Refuser</a>
+                    {% else  %}
+                        <a class="btn btn-outline-danger" href="{{ path('events_delete', { 'idEv': event.idEv }) }}">Delete</a>
 
-
+                    {% endif %}
 
                     </ul>
                 </td>
@@ -57,10 +61,14 @@
 
         <br>
         <form action={{ path("events_new")}}>
-        <button class="btn btn-info">Create NEW</button>
+        <button class="btn btn-outline-info">Create NEW</button>
         </form>
         <br>
-        <head>
+        <form action={{ path("events_SMS")}}>
+            <button class="btn btn-outline-info">SendSMS</button>
+        </form>
+        <br>
+
             <meta charset="utf-8">
             <!-- Nous chargeons les fichiers CDN de Leaflet. Le CSS AVANT le JS -->
             <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />

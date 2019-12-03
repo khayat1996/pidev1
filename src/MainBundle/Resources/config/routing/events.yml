@@ -36,3 +36,6 @@ refuser_page:
     path:     /{idEv}/refuser
     defaults: { _controller: "MainBundle:Events:refuser" }
     methods:  [GET, POST]
+events_SMS:
+    path:     /SMS
+    defaults: { _controller: "MainBundle:Events:SMS"}

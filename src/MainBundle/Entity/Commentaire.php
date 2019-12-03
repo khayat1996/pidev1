@@ -36,6 +36,20 @@ class Commentaire
     private $idUser;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="Text", type="string", length=1000, nullable=false)
+     */
+    private $text;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="date", type="string", length=50, nullable=false)
+     */
+    private $date;
+
+    /**
      * @return int
      */
     public function getIdComm()
@@ -114,20 +128,6 @@ class Commentaire
     {
         $this->date = $date;
     }
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Text", type="string", length=1000, nullable=false)
-     */
-    private $text;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="date", type="string", length=50, nullable=false)
-     */
-    private $date;
 
 
 }

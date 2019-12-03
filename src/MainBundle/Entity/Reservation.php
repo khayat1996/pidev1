@@ -37,6 +37,27 @@ class Reservation
     private $idPar;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=20, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=20, nullable=false)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=50, nullable=false)
+     */
+    private $image;
+
+    /**
      * @return int
      */
     public function getIdTicket()
@@ -131,27 +152,6 @@ class Reservation
     {
         $this->image = $image;
     }
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=20, nullable=false)
-     */
-    private $nom;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="prenom", type="string", length=20, nullable=false)
-     */
-    private $prenom;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="image", type="string", length=50, nullable=false)
-     */
-    private $image;
 
 
 }

@@ -8,6 +8,10 @@ main_forum:
 main_reservation:
     resource: "@MainBundle/Controller/ReservationController.php"
     type:     annotation
+main_media:
+    resource: "@MainBundle/Controller/MediaController.php"
+    type:     annotation
+
 event_event:
     resource: "@MainBundle/Controller/EventController.php"
     type:     annotation

@@ -1,12 +1,14 @@
 <?php
 
 namespace MainBundle\Controller;
-
+use Twilio\Exceptions\TwilioException;
+use Twilio\Rest\Client;
 use MainBundle\Form\EventsType;
 use MainBundle\Form\RechercheType;
 use MainBundle\Entity\Events;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+
 
 /**
  * Event controller.
@@ -14,6 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class EventsController extends Controller
 {
+
     /**
      * Lists all event entities.
      *
@@ -24,8 +27,10 @@ class EventsController extends Controller
 
         $events = $em->getRepository('MainBundle:Events')->findAll();
 
-        return $this->render('events/index.html.wtig', array(
+
+        return $this->render('events/index.html.twig', array(
             'events' => $events,
+
         ));
     }
 
@@ -169,4 +174,31 @@ class EventsController extends Controller
         $em->flush();
         return $this->redirectToRoute('events_index', array('idEv' => $event->getIdev()));
     }
+    public function SMSAction()
+    {
+        $account_sid = 'AC564d26deab05c8684882d7128e79a76a';
+        $auth_token = '44d7b0630152762d627e78d613ff2b5a';
+// In production, these should be environment variables. E.g.:
+// $auth_token = $_ENV["TWILIO_AUTH_TOKEN"]
+
+// A Twilio number you own with SMS capabilities
+        $twilio_number = "+18046813017";
+
+        $client = new Client($account_sid, $auth_token);
+
+            $client->messages->create(
+            // Where to send a text message (your cell phone?)
+                '+21629288735',
+                array(
+                    'from' => $twilio_number,
+                    'body' => 'I sent this message in under 10 minutes!'
+                )
+            );
+
+
+
+        return $this->redirectToRoute('events_index');
+
+    }
+
 }
