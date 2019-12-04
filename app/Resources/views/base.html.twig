@@ -15,7 +15,7 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ asset('FrontTemp/style.css') }}">
-
+    {% block cssIncludes %}{% endblock %}
 </head>
 
 <body>
@@ -53,11 +53,11 @@
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="index.html">- Home</a></li>
-                                    <li><a href="{{ path('forum_index') }}">- About Us</a></li>
+                                    <li><a href="">- About Us</a></li>
                                     <li><a href="speakers.html">- Speakears</a></li>
                                     <li><a href="schedule.html">- Schedule</a></li>
                                     <li><a href="tickets.html">- Tickets</a></li>
-                                    <li><a href="blog.html">- Blog</a></li>
+                                    <li><a href="">- Forum</a></li>
                                     <li><a href="single-blog.html">- Single Blog</a></li>
                                     <li><a href="contact.html">- Contact</a></li>
                                     <li><a href="#">- Dropdown</a>
@@ -71,13 +71,16 @@
                                 </ul>
                             </li>
                             <li><a href=" /reservation">Reservation</a></li>
-                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="{{ path('forum_homepage') }}">Forum</a></li>
                             <li><a href="contact.html">Contact</a></li>
                         </ul>
 
                         <!-- Get Tickets Button -->
-                        <a href="#" class="btn confer-btn mt-3 mt-lg-0 ml-3 ml-lg-5">Get Tickets <i class="zmdi zmdi-long-arrow-right"></i></a>
+                        <a href="{{ path('fos_user_security_login') }}" class="btn confer-btn mt-3 mt-lg-0 ml-3 ml-lg-5">Log in <i class="zmdi zmdi-long-arrow-right"></i></a>
+                        <a href="{{ path('fos_user_security_logout') }}" class="btn confer-btn mt-3 mt-lg-0 ml-3 ml-lg-5">Log out <i class="zmdi zmdi-long-arrow-right"></i></a>
                     </div>
+
+
                     <!-- Nav End -->
                 </div>
             </nav>
@@ -85,7 +88,7 @@
     </div>
 </header>
 <!-- Header Area End -->
-
+{% block main %}
 <!-- Welcome Area Start -->
 <section class="welcome-area">
     <div class="welcome-slides owl-carousel">
@@ -138,6 +141,7 @@
 <!-- Welcome Area End -->
 {% block body %}
 {% endblock %}
+
 <!-- About Us And Countdown Area Start -->
 <section class="about-us-countdown-area section-padding-100-0" id="about">
     <div class="container">
@@ -934,7 +938,7 @@
     </div>
 </section>
 <!-- Our Blog Area End -->
-
+{% endblock %}
 <!-- Contact Area Start -->
 <section class="contact-our-area section-padding-100-0">
     <div class="container">
@@ -1155,7 +1159,7 @@
 <script src="{{ asset('FrontTemp/js/confer.bundle.js') }}"></script>
 <!-- Active -->
 <script src="{{ asset('FrontTemp/js/default-assets/active.js') }}"></script>
-
+{% block jsIncludes %}{% endblock %}
 </body>
 
 </html>

@@ -18,7 +18,7 @@ security:
                 csrf_token_generator: security.csrf.token_manager
                 use_forward: false
                 always_use_default_target_path: false
-                default_target_path: /
+                default_target_path: /home
 
             logout:       true
             anonymous:    true
@@ -29,3 +29,5 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/org/, role: ROLE_ORG }
+        - { path: ^/par/, role: ROLE_USER }

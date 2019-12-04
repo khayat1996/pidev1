@@ -1,0 +1,65 @@
+{% extends 'baseBack.html.twig' %}
+{% block main %}  <div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">La liste de tout les posts</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table-upgrade">
+                            <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                <tr>
+                                    <th class="th-sm">id
+                                    </th>
+                                    <th class="th-sm">category
+                                    </th>
+                                    <th class="th-sm">sujet
+                                    </th>
+                                    <th class="th-sm">description
+                                    </th>
+                                    <th class="th-sm">dateAjout
+                                    </th>
+                                    <th class="th-sm">user
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for p in posts %}
+                                <tr>
+                                    <td>{{ p.id }}</td>
+                                    <td>{{ p.categorie }}</td>
+                                    <td><a style="color: #0a6ebd" href="{{ path('back_view_single_post',{'id': p.id }) }}">{{ p.sujet }}</a></td>
+                                    <td>{{ p.description }}</td>
+                                    <td>{{ p.dateAjout|date('Y-M-D') }}</td>
+                                    <td><a style="color: #0a6ebd" href="{{ path('back_view_userSingle_posts',{'id': p.user.id }) }}">{{ p.user.username }}</a></td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th class="th-sm">id
+                                    </th>
+                                    <th class="th-sm">category
+                                    </th>
+                                    <th class="th-sm">sujet
+                                    </th>
+                                    <th class="th-sm">description
+                                    </th>
+                                    <th class="th-sm">dateAjout
+                                    </th>
+                                    <th class="th-sm">user
+                                    </th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

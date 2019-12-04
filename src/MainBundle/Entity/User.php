@@ -5,6 +5,9 @@ namespace MainBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Security\Core\Util\SecureRandom;
 
 /**
  * @ORM\Entity
@@ -19,10 +22,15 @@ class User extends BaseUser
      */
     protected $id;
 
-    public function __construct()
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
     {
-        parent::__construct();
-        // your own logic
+        return $this->id;
     }
 
 }

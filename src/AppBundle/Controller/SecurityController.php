@@ -1,10 +1,10 @@
 <?php
 
 namespace AppBundle\Controller;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\Response;
 
 class SecurityController extends Controller
 {
@@ -19,16 +19,19 @@ class SecurityController extends Controller
     }
 
     /**
+     * @return Response
      * @Route("/home")
-     *
+
      */
     public function redirectAction()
     {
         $authChecker = $this->container->get('security.authorization_checker');
-        if($authChecker->IsGranted( 'ROLE_ADMIN')) {
-            return $this->render('@App/Security/admin_home.html.twig');
-        } else if ($authChecker->IsGranted('ROLE_USER')) {
-            return $this->render('@App/Security/user_home.html.twig');
+        if($authChecker->isGranted( 'ROLE_ADMIN')) {
+            return $this->render('baseback.html.twig');
+        } else if ($authChecker->isGranted('ROLE_ORG')) {
+            return $this->render('base.html.twig');
+        }else if ($authChecker->isGranted('ROLE_USER')) {
+            return $this->render('base.html.twig');
         } else{
             return $this->render('@FOSUser/Security/login.html.twig');
 
@@ -36,5 +39,8 @@ class SecurityController extends Controller
 
 
     }
+
+
+
 
 }
