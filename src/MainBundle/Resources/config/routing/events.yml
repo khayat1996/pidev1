@@ -39,3 +39,7 @@ refuser_page:
 events_SMS:
     path:     /SMS
     defaults: { _controller: "MainBundle:Events:SMS"}
+event_part:
+    path:     /part
+    defaults: { _controller: "MainBundle:Event:participant" }
+    methods:  GET
