@@ -58,6 +58,23 @@ class Reservation
     private $image;
 
     /**
+     * Reservation constructor.
+     * @param int $idEv
+     * @param int $idPar
+     * @param string $nom
+     * @param string $prenom
+     * @param string $image
+     */
+    public function __construct($idEv=0, $idPar=0, $nom=null, $prenom=null, $image=null)
+    {
+        $this->idEv = $idEv;
+        $this->idPar = $idPar;
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->image = $image;
+    }
+
+    /**
      * @return int
      */
     public function getIdTicket()

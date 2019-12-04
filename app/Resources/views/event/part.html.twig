@@ -33,8 +33,9 @@
 
                         <a class="btn btn-outline-info" href="{{ path('event_show', { 'idEv': event.idEv }) }}">show</a>
 
-                        <a class="btn btn-outline-dark" href="{{ path('event_edit', { 'idEv': event.idEv }) }}">edit</a>
-
+                           {% if event.nbPlace>0  %}
+                              <a href="{{ path('reservation_news',{'idEv': event.idEv, 'idPar':app.user.id,'nom':app.user.username,'prenom':app.user.username,'image':'image.jpg' ,'nbPlace':event.nbPlace-1 } ) }}"  class="btn btn-primary">Participer</a>
+                           {% endif %}
                      </ul>
                   </td>
 
@@ -45,9 +46,7 @@
       </table>
       <br>
 
-      <form action={{ path("event_new")}}>
-         <button class="btn btn-outline-info">Create NEW</button>
-      </form>
+
       <br>
       <head>
          <meta charset="utf-8">

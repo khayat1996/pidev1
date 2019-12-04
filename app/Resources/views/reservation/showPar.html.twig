@@ -1,11 +1,6 @@
 {% extends 'base.html.twig' %}
 
-
 {% block body %}
-
-
-
-    <!------ Include the above in your HEAD tag ---------->
     {% set id=app.user.id %}
 
 
@@ -44,9 +39,9 @@
                         </thead>
                         <tbody>
                         {% for reservation in reservations %}
-                            {% if reservation.idPar==id %} }
+                           {% if reservation.idPar==id %} }
                             <tr>
-                                <td><a href="{{ path('reservation_show', { 'idTicket': reservation.idTicket }) }}">{{ reservation.idTicket }}</a></td>
+                                <td><a href="{{ path('reservation_index', { 'idTicket': reservation.idTicket}) }}">{{ reservation.idTicket }}</a></td>
                                 <td>{{ reservation.idEv }}</td>
                                 <td>{{ reservation.idPar }}</td>
                                 <td>{{ reservation.nom }}</td>
@@ -130,23 +125,23 @@
 
      <style>
 
-     .row{
-     margin-top:40px;
-     padding: 0 10px;
-     }
-     .clickable{
-     cursor: pointer;
-     }
+         .row{
+             margin-top:40px;
+             padding: 0 10px;
+         }
+         .clickable{
+             cursor: pointer;
+         }
 
-     .panel-heading div {
-     margin-top: -18px;
-     font-size: 15px;
-     }
-     .panel-heading div span{
-     margin-left:5px;
-     }
-     .panel-body{
-     display: none;
-     }
-    </style>
- {% endblock %}
+         .panel-heading div {
+             margin-top: -18px;
+             font-size: 15px;
+         }
+         .panel-heading div span{
+             margin-left:5px;
+         }
+         .panel-body{
+             display: none;
+         }
+     </style>
+{% endblock %}
