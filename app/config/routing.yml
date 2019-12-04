@@ -1,16 +1,6 @@
-main_commentaire:
-    resource: "@MainBundle/Controller/CommentaireController.php"
-    type:     annotation
-
-main_forum:
-    resource: "@MainBundle/Controller/ForumController.php"
-    type:     annotation
-main_reservation:
-    resource: "@MainBundle/Controller/ReservationController.php"
-    type:     annotation
-main_media:
-    resource: "@MainBundle/Controller/MediaController.php"
-    type:     annotation
+forum:
+    resource: "@ForumBundle/Resources/config/routing.yml"
+    prefix:   /forum
 
 event_event:
     resource: "@MainBundle/Controller/EventController.php"

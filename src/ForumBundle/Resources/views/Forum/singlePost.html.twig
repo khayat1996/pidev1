@@ -1,0 +1,205 @@
+{% extends 'baseForum.html.twig' %}
+
+{% block content %}
+
+
+    <section class="content">
+        <div class="container">
+            <div class="row">
+
+            </div>
+        </div>
+
+        {% set countLikes = 0 %}
+        {% set countDisLikes = 0 %}
+        {% for likes in post.likesDislikes%}
+            {% if likes.type == "like" %}
+                {% set countLikes = countLikes + 1 %}
+                {% elseif likes.type == "dislike" %}
+                    {% set countDisLikes = countDisLikes + 1 %}
+            {% endif %}
+        {% endfor %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+
+                    <!-- POST -->
+                    <div class="post">
+                        <div class="wrap-ut pull-left">
+                            <div class="userinfo pull-left">
+                                <div class="avatar">
+                                    <img src="/forum/images/avatar.jpg" alt="" />
+                                    <div class="status green">&nbsp;</div>
+                                </div>
+                                <a href="02_topic.html">{{ post.user.username }}'s posts</a>
+                            </div>
+                            <div class="posttext pull-left">
+                                <h2><a href="{{ path('forum_view_single_post',{'id': post.id }) }}">{{ post.sujet }}</a></h2>
+                                <p>{{ post.description }}</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="postinfo pull-left">
+                            <div class="comments">
+                                <div class="commentbg">
+                                    {{ post.comments|length }}
+                                    <div class="mark"></div>
+                                </div>
+
+                            </div>
+                            <div class="views"><i class="fa fa-eye"></i> {{ post.views }}</div>
+                            <div class="time"><i class="fa fa-clock-o"></i> {{ post.dateAjout |date('Y-m-d') }}</div>
+                        </div>
+                        <div class="likeblock pull-left">
+                            <form method="post" action="{{ path('forum_add_single_like') }}">
+                                <input hidden id="idPost" name="idPost" value="{{ post.id }}">
+                                <input hidden id="like" name="like" value="like">
+                                <button type="submit" class="up"><i class="fa fa-thumbs-o-up"></i>{{ countLikes }}</button>
+                            </form>
+                        </div>
+                        <div class="likeblock pull-right">
+                            <form method="post" action={{ path('forum_add_single_like') }}>
+                                <input hidden id="idPost" name="idPost" value="{{ post.id }}">
+                                <input hidden id="dislike" name="dislike" value="dislike">
+                                <button type="submit" class="down"><i class="fa fa-thumbs-o-down"></i>{{ countDisLikes }}</button>
+                            </form>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br>
+                        {% if post.user.id == app.user.id %}
+                        <div class="pull-right postreply">
+                            <div class="pull-left">
+                                <a href="{{ path('forum_view_single_post_delete',{'id': post.id }) }}" class="btn btn-primary">Delete Post</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        {% endif %}
+
+                    </div><!-- POST -->
+                    </br>
+                    </br>
+                    </br>
+                    <h1>Comments</h1>
+
+                    <!-- POST -->
+                    <!-- POST -->
+
+
+
+                    <!-- POST -->
+                    {% for c in comments %}
+                    <div class="post">
+
+                        <div class="topwrap">
+                            <div class="userinfo pull-left">
+                                <div class="avatar">
+                                    <img src="/forum/images/avatar.jpg" alt="">
+                                    <div class="status red">&nbsp;</div>
+                                    {{ c.User.username }}
+                                </div>
+                            </div>
+                            <div class="posttext pull-left">
+                                <p>{{ c.getDescrption() }}</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="postinfobot">
+
+
+
+
+                            <div class="posted pull-left"><i class="fa fa-clock-o"></i> Posted on : {{ c.getDateAjout()|date('Y-m-d') }}</div>
+
+
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div><!-- POST -->
+                        {% if c.user.id == app.user.id %}
+                            <div class="pull-right postreply">
+                                <div class="pull-left">
+                                    <a href="{{ path('forum_view_single_Comment_delete',{'id': c.id }) }}" class="btn btn-primary">Delete Comment</a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+
+
+                        {% endif %}
+                    {% endfor %}
+                    <div class="navigation text-center">
+                        {{ knp_pagination_render(comments) }}
+                    </div>
+
+
+
+                    <!-- POST -->
+                    <div class="post">
+                        <form action="{{ path('forum_add_comment',{'id': post.id }) }}" class="form newtopic" method="post">
+                            <div class="topwrap">
+                                <div class="userinfo pull-left">
+                                    <div class="avatar">
+                                        <img src="/forum/images/avatar.jpg" alt="">
+                                        <div class="status red">&nbsp;</div>
+                                            {{ app.user.username }}
+                                    </div>
+
+                                </div>
+                                <div class="posttext pull-left">
+                                    <div class="textwraper">
+                                        <div class="postreply">Post a Reply</div>
+                                        <textarea name="Description" id="Description" placeholder="Type your message here"></textarea>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="postinfobot">
+
+
+
+                                <div class="pull-right postreply">
+                                    <div class="pull-left smile"><a href="#"><i class="fa fa-smile-o"></i></a></div>
+                                    <div class="pull-left"><button type="submit" class="btn btn-primary">Post Reply</button></div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                    </div><!-- POST -->
+
+
+                </div>
+                <div class="col-lg-4 col-md-4">
+
+                    <!-- -->
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+
+                    <!-- -->
+
+                </div>
+        </div>
+
+
+
+
+
+    </section>
+
+{% endblock %}
