@@ -4,7 +4,7 @@
 
     <center>
         <h1>Ajouter Un Nouveau Evenement</h1>
-        <table >
+        <table  class="table table-striped">
 
             <br>
             <br>
@@ -20,7 +20,8 @@
             <tr><td>Etat :* </td><td>{{ form_widget(form.etat) }} </td><tr>
            <td> <input type="submit" value="Create" class="btn btn-outline-success" /></td>
 
-    {{ form_end(form) }}
+
+                {{ form_end(form) }}
         </table>
     <ul>
         <li>
