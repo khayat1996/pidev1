@@ -1,12 +1,19 @@
 {% extends 'base.html.twig' %}
 
 
-{% block body %}
+{% block main %}
 
 
-
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <!------ Include the above in your HEAD tag ---------->
-    {% set id=app.user.id %}
+
 
 
     <div class="container">
@@ -43,13 +50,19 @@
 
                         </thead>
                         <tbody>
+
                         {% for reservation in reservations %}
-                            {% if reservation.idPar==id %} }
+
+                            {% if reservation.idPar.id == app.user.id %}
+
                             <tr>
+                                {{ reservation.idEv.NomEvent }}
+                                {{ reservation.idPar.id }}
+
                                 <td><a href="{{ path('reservation_show', { 'idTicket': reservation.idTicket }) }}">{{ reservation.idTicket }}</a></td>
-                                <td>{{ reservation.idEv }}</td>
-                                <td>{{ reservation.idPar }}</td>
-                                <td>{{ reservation.nom }}</td>
+                                <td>{{ reservation.idEv.NomEvent }}</td>
+                                <td>{{ reservation.idPar.username }}</td>
+                                <td>{{ reservation.idEv.dtEvent }}</td>
                                 <td>{{ reservation.prenom }}</td>
                                 <td>{{ reservation.image }}</td>
 
@@ -125,28 +138,3 @@
         })
     </script>
 {% endblock %}
- {% block stylesheets %}
-     <link href="{{ asset('//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css')  }}">
-
-     <style>
-
-     .row{
-     margin-top:40px;
-     padding: 0 10px;
-     }
-     .clickable{
-     cursor: pointer;
-     }
-
-     .panel-heading div {
-     margin-top: -18px;
-     font-size: 15px;
-     }
-     .panel-heading div span{
-     margin-left:5px;
-     }
-     .panel-body{
-     display: none;
-     }
-    </style>
- {% endblock %}

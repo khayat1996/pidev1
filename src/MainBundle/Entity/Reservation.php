@@ -3,7 +3,8 @@
 namespace MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use MainBundle\Entity\Events;
+use MainBundle\Entity\User;
 /**
  * Reservation
  *
@@ -22,17 +23,14 @@ class Reservation
     private $idTicket;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_ev", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="MainBundle\Entity\Events")
+     * @ORM\JoinColumn(name="Id_ev", referencedColumnName="id_ev")
      */
     private $idEv;
 
     /**
-
-     * @var integer
-     *
-     * @ORM\Column(name="id_par", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="MainBundle\Entity\User")
+     * @ORM\JoinColumn(name="id_par", referencedColumnName="id")
      */
     private $idPar;
 
