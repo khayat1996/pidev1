@@ -1,7 +1,6 @@
 <?php
 
 namespace AppBundle\Controller;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -30,9 +29,9 @@ class SecurityController extends Controller
         if($authChecker->isGranted( 'ROLE_ADMIN')) {
             return $this->render('baseback.html.twig');
         } else if ($authChecker->isGranted('ROLE_ORG')) {
-            return $this->render('@App/Security/org_home.html.twig');
+            return $this->render('organisateur.html.twig');
         }else if ($authChecker->isGranted('ROLE_USER')) {
-            return $this->render('@App/Security/user_home.html.twig');
+            return $this->render('participant.html.twig');
         } else{
             return $this->render('@FOSUser/Security/login.html.twig');
 

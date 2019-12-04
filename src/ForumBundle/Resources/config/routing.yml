@@ -1,0 +1,44 @@
+forum_homepage:
+    path:     /
+    defaults: { _controller: ForumBundle:Post:index }
+forum_homepage_Graph:
+    path:     /graph
+    defaults: { _controller: ForumBundle:Post:Graphe }
+forum_add_post:
+    path:     /addPost
+    defaults: { _controller: ForumBundle:Post:add}
+forum_view_single_post:
+    path:     /{id}
+    defaults: { _controller: ForumBundle:Post:viewsinglePost }
+forum_view_user_posts:
+    path:     /user/{id}
+    defaults: { _controller: ForumBundle:Post:viewsingleUserPost }
+back_view_user_posts:
+    path:     /dashboardForum/
+    defaults: { _controller: ForumBundle:Back:index }
+back_view_single_post:
+    path:     /dashboardForum/{id}
+    defaults: { _controller: ForumBundle:Back:viewsinglePost }
+back_view_single_post_delete:
+    path:     /dashboardForum/delete/{id}
+    defaults: { _controller: ForumBundle:Back:viewsinglePostDelete }
+back_view_single_post_delete_comm:
+    path:     /dashboardForum/delete/comm/{id}
+    defaults: { _controller: ForumBundle:Back:viewsinglePostDeleteComm }
+back_view_userSingle_posts:
+    path:     /dashboardForum/user/{id}
+
+    defaults: { _controller: ForumBundle:Back:viewsingleUserPost }
+forum_view_single_post_delete:
+    path:     /delete/{id}
+    defaults: { _controller: ForumBundle:Post:viewsinglePostDelete }
+forum_add_comment:
+    path:     /addComment/{id}
+    defaults: { _controller: ForumBundle:CommentairePost:addComment}
+forum_view_single_Comment_delete:
+    path:     /deleteComment/{id}
+    defaults: { _controller: ForumBundle:CommentairePost:viewsingleCommentDelete}
+forum_add_single_like:
+    path:     /like/
+    defaults: { _controller: ForumBundle:Likes_Dislikes:addinglelike}
+

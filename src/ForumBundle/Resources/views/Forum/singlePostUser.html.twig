@@ -1,0 +1,102 @@
+{% extends 'baseForum.html.twig' %}
+
+{% block content %}
+
+
+    <section class="content">
+        <br>
+        <br>
+        <br>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <!-- POST -->
+                    {% for post in posts %}
+                        {% if (post.user.id == userId) %}
+                        <div class="post">
+                            <div class="wrap-ut pull-left">
+                                <div class="userinfo pull-left">
+                                    <div class="avatar">
+                                        <img src="/forum/images/avatar.jpg" alt="" />
+                                        <div class="status green">&nbsp;</div>
+                                    </div>
+                                    <a href="{{ path('forum_view_user_posts',{'id': post.user.id }) }}">{{ post.user.username }}'s posts</a>
+                                </div>
+                                <div class="posttext pull-left">
+                                    <h2><a href="{{ path('forum_view_single_post',{'id': post.id }) }}">{{ post.sujet }}</a></h2>
+                                    <p>{{ post.description }}</p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="postinfo pull-left">
+                                <div class="comments">
+                                    <div class="commentbg">
+                                        {{ post.comments|length }}
+                                        <div class="mark"></div>
+                                    </div>
+
+                                </div>
+                                <div class="views"><i class="fa fa-eye"></i> {{ post.views }}</div>
+                                <div class="time"><i class="fa fa-clock-o"></i> {{ post.dateAjout|date('Y-m-d') }}</div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                    <!-- POST -->
+
+
+                    <!-- POST -->
+                    <!-- POST -->
+
+
+                    <!-- POST -->
+                    <!-- POST -->
+
+
+                    <!-- POST -->
+                    <!-- POST -->
+
+
+
+                    <!-- POST -->
+                    <!-- POST -->
+
+
+                    <!-- POST -->
+                    <!-- POST -->
+
+
+                    <!-- POST -->
+                    <!-- POST -->
+
+                </div>
+                <div class="col-lg-4 col-md-4">
+
+                    <!-- -->
+
+            </div>
+        </div>
+
+
+
+        <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+
+
+    </section>
+
+{% endblock %}

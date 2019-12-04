@@ -1,0 +1,88 @@
+{% extends 'baseBack.html.twig' %}
+{% block main %}  <div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Afficher le Poste</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="post">
+                            <div class="wrap-ut pull-left">
+                                <div class="userinfo pull-left">
+                                    <div class="avatar">
+                                        <img src="" alt="" />
+                                        <div class="status green">&nbsp;</div>
+                                    </div>
+                                    <a href="02_topic.html">{{ post.user.username }}'s posts</a>
+                                </div>
+                                <div class="posttext pull-left">
+                                    <h2>{{ post.sujet }}</h2>
+                                    <p>{{ post.description }}</p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="postinfo pull-left">
+                                <div class="comments">
+                                    <div class="commentbg">
+                                        {{ post.comments|length }}
+
+                                        <div class="mark"></div>
+                                    </div>
+
+                                </div>
+                                <div class="views"><i class="fa fa-eye"></i> {{ post.views }} </div>
+                                <div class="time"><i class="fa fa-clock-o"></i> {{ post.dateAjout|date('Y-m-d') }}</div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="pull-right postreply">
+                                <div class="pull-left">
+                                    <a href="{{ path('back_view_single_post_delete',{'id': post.id }) }}" class="btn btn-primary">Delete Post</a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        </br>
+                        </br>
+                        <h3>Comments :</h3>
+                        </br>
+                        {% for c in post.comments %}
+                            <div class="post">
+                                <div class="topwrap">
+                                    <div class="userinfo pull-left">
+                                        <div class="avatar">
+                                            <img src="" alt="">
+                                            <div class="status red"></div>
+                                            Commenter par:
+                                            {{ c.User.username }}
+                                        </div>
+                                    </div>
+                                    <div class="posttext pull-left">
+                                        <p>{{ c.getDescrption() }}</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="postinfobot">
+
+
+
+                                    <div class="posted pull-left"><i class="fa fa-clock-o"></i> Posted on : {{ c.getDateAjout()|date('Y-m-d') }}</div>
+
+
+                                    <div class="clearfix"></div>
+                                    <div class="pull-right postreply">
+                                        <div class="pull-left"><a href="{{ path('back_view_single_post_delete_comm',{'id': c.id }) }}" class="btn btn-primary">Delete Comment</a></div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

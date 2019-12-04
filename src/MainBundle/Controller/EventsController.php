@@ -133,17 +133,17 @@ class EventsController extends Controller
         $event = new Events();
         $form = $this->createForm(RechercheType::class, $event);
         $form = $form->handleRequest($request);
-        $nom = $request->get('search') ;
         if ($form->isSubmitted()) {
-            $em= $this->getDoctrine()->getManager()->getRepository(Events::class);
-            $event= $em->find($event->getIdEv());
+            $event = $this->getDoctrine()
+           ->getRepository(Events::class)
+                ->findBy((array('nomEvent'=>$event->getNomEvent())));
 
         }
         else
         {
             $event = $this->getDoctrine()->getRepository(Events::class)->findAll();
         }
-        return $this->render('events/search.html.twig', array("form"=> $form->createView(),"events" => $event));
+        return $this->render('events/search.html.twig', array('form'=> $form->createView(),'events' => $event));
 
     }
     public function basebackAction()
@@ -158,7 +158,7 @@ class EventsController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $event = $this->getDoctrine()->getRepository(Events::class)->find($idEv);
-        $event->setEtat("Accepter");
+        $event->setEtat("Accepte");
         $em->persist($event);
         $em->flush();
         return $this->redirectToRoute('events_index', array('idEv' => $event->getIdev()));
@@ -169,7 +169,7 @@ class EventsController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $event = $this->getDoctrine()->getRepository(Events::class)->find($idEv);
-        $event->setEtat("refuser");
+        $event->setEtat("refuse");
         $em->persist($event);
         $em->flush();
         return $this->redirectToRoute('events_index', array('idEv' => $event->getIdev()));

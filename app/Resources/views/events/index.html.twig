@@ -3,7 +3,7 @@
 {% block body %}
     <center>
     <h1>EVENTS</h1>
-    <table border="5" width="1200">
+    <table border="5" width="1200" class="table table-striped">
         <thead>
             <tr>
 
@@ -49,7 +49,6 @@
                     <a class="btn btn-outline-danger" href="{{ path('refuser_page', { 'idEv': event.idEv }) }}">Refuser</a>
                     {% else  %}
                         <a class="btn btn-outline-danger" href="{{ path('events_delete', { 'idEv': event.idEv }) }}">Delete</a>
-
                     {% endif %}
 
                     </ul>
@@ -68,6 +67,7 @@
             <button class="btn btn-outline-info">SendSMS</button>
         </form>
         <br>
+
 
             <meta charset="utf-8">
             <!-- Nous chargeons les fichiers CDN de Leaflet. Le CSS AVANT le JS -->

@@ -27,10 +27,16 @@
                 {{ form_widget(form.plainPassword.second,  { 'attr': {'class': 'mdl-textfield__input','type':'password','name':'plainPassword.second','id':'plainPassword.second' } }) }}
                 <label class="mdl-textfield__label" for="plainPassword.second">Re-Type Password</label>
             </div>
+
+            {{ form_widget(form.roles, { 'attr': {'class': 'form-input', 'placeholder': 'Role'|trans,'type':'text' } }) }}
+
             <div>
                 <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}"/>
             </div>
+
             {{ form_end(form) }}
+
+
         </form>
     </div>
 

@@ -43,9 +43,16 @@ class Events
      */
     private $lieu;
 
+
     /**
      * @var integer
-     *
+     * @Assert\Type(
+     *     type="numeric",
+     *     message="the value {{value}} is not valid {{type}}."
+     * )
+     * @Assert\Length(
+     *     min = 2,
+     *     )
      * @ORM\Column(name="nb_place", type="integer", nullable=false)
      */
     protected $nbPlace;
@@ -221,6 +228,8 @@ class Events
     {
         $this->etat = $etat;
     }
+
+
     public function __construct()
     {
 
