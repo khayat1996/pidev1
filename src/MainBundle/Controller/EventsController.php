@@ -154,7 +154,7 @@ class EventsController extends Controller
 
     public function accepterAction($idEv, Request $request)
     {
-
+      //  $this->SMSAction();
 
         $em = $this->getDoctrine()->getManager();
         $event = $this->getDoctrine()->getRepository(Events::class)->find($idEv);
@@ -191,7 +191,7 @@ class EventsController extends Controller
                 '+21629288735',
                 array(
                     'from' => $twilio_number,
-                    'body' => 'I sent this message in under 10 minutes!'
+                    'body' => 'votre evenement est accepter '
                 )
             );
 

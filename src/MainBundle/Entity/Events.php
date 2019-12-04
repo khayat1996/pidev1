@@ -3,6 +3,7 @@
 namespace MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Events
@@ -47,7 +48,7 @@ class Events
      *
      * @ORM\Column(name="nb_place", type="integer", nullable=false)
      */
-    private $nbPlace;
+    protected $nbPlace;
 
     /**
      * @var \DateTime
