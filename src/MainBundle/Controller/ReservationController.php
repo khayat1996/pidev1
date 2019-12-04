@@ -3,10 +3,14 @@
 namespace MainBundle\Controller;
 
 
+use http\Env\Response;
+use MainBundle\Form\EventType;
+use MainBundle\Form\EventsType;
 
-
-
+use MainBundle\Entity\Events;
+use MainBundle\Controller\EventController;
 use MainBundle\Entity\Reservation;
+use mysql_xdevapi\DatabaseObject;
 use Psr\Container\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -136,4 +140,30 @@ class ReservationController extends Controller
             ->getForm()
             ;
     }
+    /**
+     * Creates a new reservation entity.
+
+     * @Route("/new/{idEv}/{idPar}/{nom}/{prenom}/{image}/{nbPlace}", name="reservation_news")
+     * @Method({"GET", "POST"})
+     */
+    public function newsAction($idEv,$idPar,$nom,$prenom,$image,$nbPlace)
+    {
+        $reservation = new Reservation($idEv,$idPar,$nom,$prenom,$image);
+
+            $em = $this->getDoctrine()->getManager();
+
+        $event = $this->getDoctrine()->getRepository(Events::class)->find($idEv);
+        $event->setNbPlace($nbPlace);
+        $em->persist($event);
+        $em->persist($reservation);
+            $em->flush();
+
+            return $this->redirectToRoute('event_part', array('idEv' => $event->getIdev()));
+    }
+
+
+
+
+
+
 }
