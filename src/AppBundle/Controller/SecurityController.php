@@ -29,9 +29,9 @@ class SecurityController extends Controller
         if($authChecker->isGranted( 'ROLE_ADMIN')) {
             return $this->render('baseback.html.twig');
         } else if ($authChecker->isGranted('ROLE_ORG')) {
-            return $this->render('base.html.twig');
+            return $this->render('organisateur.html.twig');
         }else if ($authChecker->isGranted('ROLE_USER')) {
-            return $this->render('base.html.twig');
+            return $this->render('participant.html.twig');
         } else{
             return $this->render('@FOSUser/Security/login.html.twig');
 
