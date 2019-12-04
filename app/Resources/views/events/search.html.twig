@@ -1,7 +1,9 @@
 {% extends 'baseback.html.twig' %}
 {% block body %}
-    <center></center>
-<table border="1">
+    <center>
+
+        <table border="1" class="table table-striped">
+            {{ form(form) }}
     <thead>
     <tr>
 
@@ -31,12 +33,9 @@
 
         <td>
             <ul>
-                <li>
-                    <a href="{{ path('events_show', { 'idEv': event.idEv }) }}">show</a>
-                </li>
-                <li>
-                    <a href="{{ path('events_edit', { 'idEv': event.idEv }) }}">edit</a>
-                </li>
+                <a class="btn btn-outline-info" href="{{ path('events_show', { 'idEv': event.idEv }) }}">show</a>
+
+                <a class="btn btn-outline-dark" href="{{ path('events_edit', { 'idEv': event.idEv }) }}">edit</a>
             </ul>
     <tr>
     {%endfor%}

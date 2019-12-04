@@ -50,7 +50,6 @@
                     {% else  %}
                         <a class="btn btn-outline-danger" href="{{ path('events_delet', { 'idEv': event.idEv }) }}">Delete</a>
                     {% endif %}
-
                     </ul>
                 </td>
             </tr>
@@ -66,9 +65,12 @@
         </form>
         <br>
         <form action={{ path("events_SMS")}}>
-            <button class="btn btn-outline-info">SendSMS</button>
+            <button class="btn btn-outline-success">SendSMS</button>
         </form>
-
+        <br>
+        <form action={{ path("events_search")}}>
+            <button class="btn btn-outline-warning">Search</button>
+        </form>
         <br>
 
 
