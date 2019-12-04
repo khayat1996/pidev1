@@ -5,6 +5,9 @@ main_commentaire:
 main_forum:
     resource: "@MainBundle/Controller/ForumController.php"
     type:     annotation
+main_reservation:
+    resource: "@MainBundle/Controller/ReservationController.php"
+    type:     annotation
 main_media:
     resource: "@MainBundle/Controller/MediaController.php"
     type:     annotation

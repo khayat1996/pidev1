@@ -10,4 +10,16 @@ class DefaultController extends Controller
     {
         return $this->render('MainBundle:Default:index.html.twig');
     }
+    public function listAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $participants = $em->getRepository('MainBundle:Participant')
+            ->findAll();
+        if (isset($participants)) {
+            return $this->render('base.html.twig', array(
+                'participants' => $participants
+            ));
+        }
+    }
+
 }

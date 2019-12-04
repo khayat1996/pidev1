@@ -15,7 +15,6 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ asset('FrontTemp/style.css') }}">
-
 </head>
 
 <body>
@@ -30,6 +29,7 @@
     <div class="classy-nav-container breakpoint-off">
         <div class="container">
             <!-- Classy Menu -->
+
             <nav class="classy-navbar justify-content-between" id="conferNav">
 
                 <!-- Logo -->
@@ -47,6 +47,7 @@
                         <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                     </div>
                     <!-- Nav Start -->
+
                     <div class="classynav">
                         <ul id="nav">
                             <li class="active"><a href="index.html">Home</a></li>
@@ -79,36 +80,55 @@
                         <a href="#" class="btn confer-btn mt-3 mt-lg-0 ml-3 ml-lg-5">Get Tickets <i class="zmdi zmdi-long-arrow-right"></i></a>
                     </div>
                     <!-- Nav End -->
+
                 </div>
             </nav>
         </div>
     </div>
 </header>
+
 <!-- Header Area End -->
 
 <!-- Welcome Area Start -->
+
 <section class="welcome-area">
+
+
     <div class="welcome-slides owl-carousel">
         <!-- Single Slide -->
+
         <div class="single-welcome-slide bg-img bg-overlay jarallax" style="background-image: url({{ asset('FrontTemp/img/bg-img/1.jpg') }});">
+
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <!-- Welcome Text -->
                     <div class="col-12">
+
+
+
+
+
                         <div class="welcome-text text-right">
+
                             <h2 data-animation="fadeInUp" data-delay="300ms">Science <br>Conference</h2>
                             <h6 data-animation="fadeInUp" data-delay="500ms">Shangri-La Hotel, Bangkok, Bangkok, Thailand</h6>
                             <div class="hero-btn-group" data-animation="fadeInUp" data-delay="700ms">
+
                                 <a href="#" class="btn confer-btn">More Information <i class="zmdi zmdi-long-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
+
+
         <!-- Single Slide -->
+
         <div class="single-welcome-slide bg-img bg-overlay jarallax" style="background-image: url({{ asset('FrontTemp/img/bg-img/45.jpg') }});">
+
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <!-- Welcome Text -->
@@ -134,10 +154,13 @@
 
     <!-- Scroll Icon -->
     <div class="icon-scroll" id="scrollDown"></div>
+    {% block body %}
+
+    {% endblock %}
 </section>
 <!-- Welcome Area End -->
-{% block body %}
-{% endblock %}
+
+
 <!-- About Us And Countdown Area Start -->
 <section class="about-us-countdown-area section-padding-100-0" id="about">
     <div class="container">
@@ -1155,7 +1178,7 @@
 <script src="{{ asset('FrontTemp/js/confer.bundle.js') }}"></script>
 <!-- Active -->
 <script src="{{ asset('FrontTemp/js/default-assets/active.js') }}"></script>
-
+{% block javascripts %}{% endblock %}
 </body>
 
 </html>

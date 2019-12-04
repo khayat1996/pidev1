@@ -13,6 +13,85 @@ use Doctrine\ORM\Mapping as ORM;
 class Organisateur
 {
     /**
+     * @return int
+     */
+    public function getIdOrg()
+    {
+        return $this->idOrg;
+    }
+
+    /**
+     * @param int $idOrg
+     */
+    public function setIdOrg($idOrg)
+    {
+        $this->idOrg = $idOrg;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param string $nom
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * @param string $prenom
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTel()
+    {
+        return $this->tel;
+    }
+
+    /**
+     * @param string $tel
+     */
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+    }
+    /**
      * @var integer
      *
      * @ORM\Column(name="id_org", type="integer", nullable=false)
