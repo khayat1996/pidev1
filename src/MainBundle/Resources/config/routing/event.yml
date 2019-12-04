@@ -23,3 +23,7 @@ event_delete:
     defaults: { _controller: "MainBundle:Event:delete" }
     methods:  DELETE
 
+event_part:
+    path:     /part
+    defaults: { _controller: "MainBundle:Event:part" }
+    methods:  GET
