@@ -1,7 +1,9 @@
 forum:
     resource: "@ForumBundle/Resources/config/routing.yml"
     prefix:   /forum
-
+main_media:
+    resource: "@MainBundle/Controller/MediaController.php"
+    type:     annotation
 event_event:
     resource: "@MainBundle/Controller/EventController.php"
     type:     annotation
