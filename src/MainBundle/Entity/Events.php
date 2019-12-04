@@ -24,6 +24,8 @@ class Events
 
     /**
      * @var string
+     * @Assert\NotBlank
+     * @Assert\Length(min=3)
      *
      * @ORM\Column(name="nom_org", type="string", length=50, nullable=false)
      */
@@ -31,6 +33,8 @@ class Events
 
     /**
      * @var string
+     * @Assert\NotBlank
+     * @Assert\Length(min=3)
      *
      * @ORM\Column(name="nom_event", type="string", length=50, nullable=false)
      */
@@ -38,6 +42,8 @@ class Events
 
     /**
      * @var string
+     * @Assert\NotBlank
+     * @Assert\Length(min=3)
      *
      * @ORM\Column(name="lieu", type="string", length=50, nullable=false)
      */
@@ -46,19 +52,19 @@ class Events
 
     /**
      * @var integer
-     * @Assert\Type(
-     *     type="numeric",
-     *     message="the value {{value}} is not valid {{type}}."
+     *  @Assert\Range(
+     *      min = 10,
+     *      max = 200,
+     *      minMessage = "You must be at least {{ limit }}cm tall to enter",
+     *      maxMessage = "You cannot be taller than {{ limit }}cm to enter"
      * )
-     * @Assert\Length(
-     *     min = 2,
-     *     )
      * @ORM\Column(name="nb_place", type="integer", nullable=false)
      */
     protected $nbPlace;
 
     /**
      * @var \DateTime
+     * @Assert\GreaterThanOrEqual("+1 hours")
      *
      * @ORM\Column(name="dt_event", type="date", nullable=false)
      */
@@ -66,6 +72,12 @@ class Events
 
     /**
      * @var integer
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 180,
+     *      minMessage = "You must be at least {{ limit }}cm tall to enter",
+     *      maxMessage = "You cannot be taller than {{ limit }}cm to enter"
+     * )
      *
      * @ORM\Column(name="prix", type="integer", nullable=false)
      */
@@ -73,6 +85,8 @@ class Events
 
     /**
      * @var string
+     * @Assert\NotBlank
+     * @Assert\Length(min=5)
      *
      * @ORM\Column(name="description", type="string", length=255, nullable=false)
      */

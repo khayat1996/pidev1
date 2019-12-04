@@ -3,6 +3,8 @@
 
 namespace MainBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Media
  *
@@ -22,6 +24,8 @@ class Media
 
     /**
      * @var string
+     * @Assert\NotBlank
+     * @Assert\Length(min=3)
      *
      * @ORM\Column(name="name", type="string", length=150, nullable=true)
      */
@@ -29,6 +33,8 @@ class Media
 
     /**
      * @var string
+     * @Assert\NotBlank
+     * @Assert\Length(min=3)
      *
      * @ORM\Column(name="type", type="string", length=45, nullable=true)
      */
@@ -36,6 +42,7 @@ class Media
 
     /**
      * @var \DateTime
+     * @Assert\GreaterThanOrEqual("+1 hours")
      *
      * @ORM\Column(name="date_create", type="date", nullable=true)
      */
@@ -103,6 +110,9 @@ class Media
     {
         $this->dateCreate = $dateCreate;
     }
+
+
+
 
     public function __construct()
     {

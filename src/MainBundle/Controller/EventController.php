@@ -17,14 +17,20 @@ class EventController extends Controller
      * Lists all event entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $events = $em->getRepository('MainBundle:Events')->findAll();
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $events,
+            $request->query->getInt('page', 1)/*page number*/,
+            2/*limit per page*/
+        );
 
         return $this->render('event/index.html.twig', array(
-            'events' => $events,
+            'events' => $pagination,
         ));
     }
 
@@ -127,14 +133,20 @@ class EventController extends Controller
         return $this->render("organisateur.html.twig");
 
     }
-    public function partAction()
+    public function partAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $events = $em->getRepository('MainBundle:Events')->findAll();
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $events,
+            $request->query->getInt('page', 1)/*page number*/,
+            3/*limit per page*/
+        );
 
         return $this->render('event/part.html.twig', array(
-            'events' => $events,
+            'events' => $pagination,
         ));
 
 

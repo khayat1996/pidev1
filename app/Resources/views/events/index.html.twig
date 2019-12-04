@@ -10,7 +10,7 @@
                 <th>Nom Organsiateur</th>
                 <th>Nom Event</th>
                 <th>Lieu</th>
-                <th>Nombre de Place</th>
+                <th>Nb Place</th>
                 <th>Date Event</th>
                 <th>Prix (dt)</th>
                 <th>Description</th>
@@ -48,7 +48,7 @@
 
                     <a class="btn btn-outline-danger" href="{{ path('refuser_page', { 'idEv': event.idEv }) }}">Refuser</a>
                     {% else  %}
-                        <a class="btn btn-outline-danger" href="{{ path('events_delete', { 'idEv': event.idEv }) }}">Delete</a>
+                        <a class="btn btn-outline-danger" href="{{ path('events_delet', { 'idEv': event.idEv }) }}">Delete</a>
                     {% endif %}
 
                     </ul>
@@ -57,7 +57,9 @@
         {% endfor %}
         </tbody>
     </table>
-
+        <div class="navigation">
+            {{ knp_pagination_render(events) }}
+        </div>
         <br>
         <form action={{ path("events_new")}}>
         <button class="btn btn-outline-info">Create NEW</button>
@@ -66,6 +68,7 @@
         <form action={{ path("events_SMS")}}>
             <button class="btn btn-outline-info">SendSMS</button>
         </form>
+
         <br>
 
 
