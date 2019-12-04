@@ -13,6 +13,101 @@ use Doctrine\ORM\Mapping as ORM;
 class Participant
 {
     /**
+     * @return int
+     */
+    public function getIdPar()
+    {
+        return $this->idPar;
+    }
+
+    /**
+     * @param int $idPar
+     */
+    public function setIdPar($idPar)
+    {
+        $this->idPar = $idPar;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param string $nom
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * @param string $prenom
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTel()
+    {
+        return $this->tel;
+    }
+
+    /**
+     * @param string $tel
+     */
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+    }
+
+    /**
+     * @return float
+     */
+    public function getSolde()
+    {
+        return $this->solde;
+    }
+
+    /**
+     * @param float $solde
+     */
+    public function setSolde($solde)
+    {
+        $this->solde = $solde;
+    }
+    /**
      * @var integer
      *
      * @ORM\Column(name="id_par", type="integer", nullable=false)

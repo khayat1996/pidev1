@@ -6,21 +6,23 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class NoteType extends AbstractType
+class MediaType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('idEv')->add('note');
+        $builder->add('name')
+            ->add('type')
+            ->add('dateCreate');
     }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MainBundle\Entity\Note'
+            'data_class' => 'MainBundle\Entity\Media'
         ));
     }
 
@@ -29,7 +31,7 @@ class NoteType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'mainbundle_note';
+        return 'mainbundle_media';
     }
 
 

@@ -1,0 +1,42 @@
+{% extends 'baseback.html.twig' %}
+
+{% block body %}
+<center>
+    <h1>Media list</h1>
+    <table border="5" width="500"  class="table table-striped">
+        <thead>
+
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Datecreate</th>
+                <th><center>Actions</center></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for medium in media %}
+            <tr>
+                <td>{{ medium.name }}</td>
+                <td>{{ medium.type }}</td>
+                <td>{% if medium.dateCreate %}{{ medium.dateCreate|date('Y-m-d') }}{% endif %}</td>
+                <td>
+
+                    <ul>
+                        <a class="btn btn-outline-info" href="{{ path('media_show', { 'idMedia': medium.idMedia }) }}">show</a>
+
+                        <a class="btn btn-outline-dark" href="{{ path('media_edit', { 'idMedia': medium.idMedia }) }}">edit</a>
+
+
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <form action={{ path("media_new")}}>
+        <button class="btn btn-outline-info">Create NEW</button>
+    </form>
+</center>
+{% endblock %}

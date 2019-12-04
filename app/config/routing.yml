@@ -1,7 +1,10 @@
-forum:
-    resource: "@ForumBundle/Resources/config/routing.yml"
-    prefix:   /forum
+main_commentaire:
+    resource: "@MainBundle/Controller/CommentaireController.php"
+    type:     annotation
 
+main_forum:
+    resource: "@MainBundle/Controller/ForumController.php"
+    type:     annotation
 main_note:
     resource: "@MainBundle/Controller/NoteController.php"
     type:     annotation

@@ -3,6 +3,7 @@
 namespace MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Events
@@ -42,12 +43,19 @@ class Events
      */
     private $lieu;
 
+
     /**
      * @var integer
-     *
+     * @Assert\Type(
+     *     type="numeric",
+     *     message="the value {{value}} is not valid {{type}}."
+     * )
+     * @Assert\Length(
+     *     min = 2,
+     *     )
      * @ORM\Column(name="nb_place", type="integer", nullable=false)
      */
-    private $nbPlace;
+    protected $nbPlace;
 
     /**
      * @var \DateTime
@@ -220,6 +228,8 @@ class Events
     {
         $this->etat = $etat;
     }
+
+
     public function __construct()
     {
 

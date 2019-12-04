@@ -4,7 +4,7 @@
 {% block body %}
     <center>
     <h1>Event edit</h1>
-<table>
+<table  class="table table-striped">
     {{ form_start(edit_form) }}
     <tr><td>Nom Organisateur :*</td><td>{{ form_widget(edit_form.nomOrg) }}</td></tr>
     <tr><td>Nom Event :* </td><td>{{ form_widget(edit_form.nomEvent) }} </td></tr>
@@ -27,6 +27,7 @@
         </td>
     </tr>
 </table>
+
     </center>
 
 

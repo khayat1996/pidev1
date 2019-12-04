@@ -1,0 +1,40 @@
+{% extends 'baseback.html.twig' %}
+
+{% block body %}
+<center>
+    <h1>Medium</h1>
+
+    <table border="1" width="500"  class="table table-striped">
+        <tbody>
+
+
+            <tr>
+                <th>Name</th>
+                <td>{{ medium.name }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ medium.type }}</td>
+            </tr>
+            <tr>
+                <th>Datecreate</th>
+
+                <td>{% if medium.dateCreate %}{{ medium.dateCreate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+    <ul>
+
+        <a href="{{ path('media_index') }}">Back to the list</a>
+
+        <br>
+
+        <a class="btn btn-outline-info" href="{{ path('media_edit',{ 'idMedia': medium.idMedia }) }}">Edit</a>
+
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Delete" class="btn btn-outline-danger">
+        {{ form_end(delete_form) }}
+
+    </ul>
+</center>
+    {% endblock %}

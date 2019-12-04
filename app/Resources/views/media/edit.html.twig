@@ -1,0 +1,28 @@
+{% extends 'baseback.html.twig' %}
+
+{% block body %}
+<center>
+
+    <h1>Medium edit</h1>
+    <table  class="table table-striped">
+    {{ form_start(edit_form) }}
+    <tr><td>Name :*</td><td>{{ form_widget(edit_form.name) }}</td></tr>
+    <tr><td>Type :* </td><td>{{ form_widget(edit_form.type) }} </td></tr>
+    <tr><td>Date Creation :* </td><td>{{ form_widget(edit_form.dateCreate) }} </td></tr>
+        <tr> <td><input type="submit" value="Enregistre" class="btn btn-outline-success"></td>
+
+            {{ form_end(edit_form) }}
+
+    <ul>
+        <td>
+            <a class="btn btn-outline-info" href="{{ path('media_index') }}" >Back to the list</a> </td>
+        </td>
+        <td>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete" class="btn btn-outline-danger">
+            {{ form_end(delete_form) }}
+        </td>
+    </ul>
+    </table>
+</center>
+{% endblock %}

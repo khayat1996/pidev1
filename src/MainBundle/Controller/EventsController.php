@@ -1,12 +1,14 @@
 <?php
 
 namespace MainBundle\Controller;
-
+use Twilio\Exceptions\TwilioException;
+use Twilio\Rest\Client;
 use MainBundle\Form\EventsType;
 use MainBundle\Form\RechercheType;
 use MainBundle\Entity\Events;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+
 
 /**
  * Event controller.
@@ -14,6 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class EventsController extends Controller
 {
+
     /**
      * Lists all event entities.
      *
@@ -24,8 +27,10 @@ class EventsController extends Controller
 
         $events = $em->getRepository('MainBundle:Events')->findAll();
 
+
         return $this->render('events/index.html.twig', array(
             'events' => $events,
+
         ));
     }
 
@@ -128,17 +133,17 @@ class EventsController extends Controller
         $event = new Events();
         $form = $this->createForm(RechercheType::class, $event);
         $form = $form->handleRequest($request);
-        $nom = $request->get('search') ;
         if ($form->isSubmitted()) {
-            $em= $this->getDoctrine()->getManager()->getRepository(Events::class);
-            $event= $em->find($event->getIdEv());
+            $event = $this->getDoctrine()
+           ->getRepository(Events::class)
+                ->findBy((array('nomEvent'=>$event->getNomEvent())));
 
         }
         else
         {
             $event = $this->getDoctrine()->getRepository(Events::class)->findAll();
         }
-        return $this->render('events/search.html.twig', array("form"=> $form->createView(),"events" => $event));
+        return $this->render('events/search.html.twig', array('form'=> $form->createView(),'events' => $event));
 
     }
     public function basebackAction()
@@ -149,11 +154,11 @@ class EventsController extends Controller
 
     public function accepterAction($idEv, Request $request)
     {
-
+      //  $this->SMSAction();
 
         $em = $this->getDoctrine()->getManager();
         $event = $this->getDoctrine()->getRepository(Events::class)->find($idEv);
-        $event->setEtat("Accepter");
+        $event->setEtat("Accepte");
         $em->persist($event);
         $em->flush();
         return $this->redirectToRoute('events_index', array('idEv' => $event->getIdev()));
@@ -164,9 +169,36 @@ class EventsController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $event = $this->getDoctrine()->getRepository(Events::class)->find($idEv);
-        $event->setEtat("refuser");
+        $event->setEtat("refuse");
         $em->persist($event);
         $em->flush();
         return $this->redirectToRoute('events_index', array('idEv' => $event->getIdev()));
     }
+    public function SMSAction()
+    {
+        $account_sid = 'AC564d26deab05c8684882d7128e79a76a';
+        $auth_token = '44d7b0630152762d627e78d613ff2b5a';
+// In production, these should be environment variables. E.g.:
+// $auth_token = $_ENV["TWILIO_AUTH_TOKEN"]
+
+// A Twilio number you own with SMS capabilities
+        $twilio_number = "+18046813017";
+
+        $client = new Client($account_sid, $auth_token);
+
+            $client->messages->create(
+            // Where to send a text message (your cell phone?)
+                '+21629288735',
+                array(
+                    'from' => $twilio_number,
+                    'body' => 'votre evenement est accepter '
+                )
+            );
+
+
+
+        return $this->redirectToRoute('events_index');
+
+    }
+
 }

@@ -2,6 +2,10 @@
 
 namespace MainBundle\Controller;
 
+
+
+
+
 use MainBundle\Entity\Reservation;
 use Psr\Container\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -61,7 +65,7 @@ class ReservationController extends Controller
     /**
      * Finds and displays a reservation entity.
      *
-     * @Route("/{idTicket}", name="reservation_show")
+     * @Route("/", name="reservation_show")
      * @Method("GET")
      */
     public function showAction(Reservation $reservation)
@@ -103,21 +107,18 @@ class ReservationController extends Controller
     /**
      * Deletes a reservation entity.
      *
-     * @Route("/{idTicket}/delete", name="reservation_delete")
+     * @Route("/delete/{id}", name="reservation_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Reservation $reservation)
+    public function viewsingleResDeleteAction($id)
     {
-        $form = $this->createDeleteForm($reservation);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($reservation);
-            $em->flush();
-        }
+        $em = $this->getDoctrine()->getEntityManager();
+        $post = $em->getRepository('MainBundle:Reservation')->find($id);
+        $em->remove($post);
+        $em->flush();
+        return $this->redirectToRoute("reservation_index");
 
-        return $this->redirectToRoute('reservation_index');
     }
 
     /**
@@ -133,6 +134,6 @@ class ReservationController extends Controller
             ->setAction($this->generateUrl('reservation_delete', array('idTicket' => $reservation->getIdticket())))
             ->setMethod('DELETE')
             ->getForm()
-        ;
+            ;
     }
 }

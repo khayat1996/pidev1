@@ -127,10 +127,16 @@ class EventController extends Controller
         return $this->render("organisateur.html.twig");
 
     }
-    public function participantAction()
+    public function partAction()
     {
-        return $this->render("participant.html.twig");
+        $em = $this->getDoctrine()->getManager();
 
+        $events = $em->getRepository('MainBundle:Events')->findAll();
+
+        return $this->render('event/part.html.twig', array(
+            'events' => $events,
+        ));
     }
+
 
 }
