@@ -10,4 +10,5 @@ namespace MainBundle\Repository;
  */
 class SoldeRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

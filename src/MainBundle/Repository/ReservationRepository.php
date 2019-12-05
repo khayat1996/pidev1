@@ -18,7 +18,9 @@ class ReservationRepository extends \Doctrine\ORM\EntityRepository
 
         $statement->bindValue('idt',$id);
         $statement->execute();
-        return $statement;
+        $result = $statement->fetchAll();
+        var_dump($result);
+        return $result;
 
 
 

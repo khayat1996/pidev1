@@ -53,15 +53,16 @@
 
                         {% for reservation in reservations %}
 
-                            {% if reservation.idPar.id == app.user.id %}
+                            {% if reservation.idPar == app.user.id %}
 
                             <tr>
 
 
                                 <td><a href="{{ path('reservation_show', { 'idTicket': reservation.idTicket }) }}">{{ reservation.idTicket }}</a></td>
-                                <td>{{ reservation.idEv.NomEvent }}</td>
-                                <td>{{ reservation.idPar.username }}</td>
-                                <td>{{ reservation.idEv.dtEvent }}</td>
+
+                                <td>{{ reservation.idEv}}</td>
+                                <td>{{ reservation.idPar }}</td>
+                                <td>{{ reservation.nom}}</td>
                                 <td>{{ reservation.prenom }}</td>
                                 <td>{{ reservation.image }}</td>
 
@@ -74,6 +75,8 @@
                         {% endfor %}
                         </tbody>
                     </table>
+
+
                 </div>
             </div>
 

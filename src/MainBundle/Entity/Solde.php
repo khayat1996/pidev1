@@ -33,19 +33,35 @@ class Solde
     private $solde;
 
     /**
-     * @return mixed
+     * Solde constructor.
+     * @param int $id
+     * @param $idPar
+     * @param int $solde
+     * @param int $nbParticipations
      */
-    public function getIdPar()
+    public function __construct($id, $idPar, $solde, $nbParticipations=0)
     {
-        return $this->idPar;
+        $this->id = $id;
+        $this->idPar = $idPar;
+        $this->solde = $solde;
+        $this->nbParticipations = $nbParticipations;
+    }
+
+
+    /**
+     * @return \MainBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
     /**
-     * @param mixed $idPar
+     * @param User $user
      */
-    public function setIdPar($idPar)
+    public function setUser($user)
     {
-        $this->idPar = $idPar;
+        $this->user = $user;
     }
 
     /**

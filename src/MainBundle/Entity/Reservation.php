@@ -9,7 +9,7 @@ use MainBundle\Entity\User;
  * Reservation
  *
  * @ORM\Table(name="reservation", indexes={@ORM\Index(name="id_ev", columns={"id_ev"}), @ORM\Index(name="id_par", columns={"id_par"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MainBundle\Repository\ReservationRepository")
  */
 class Reservation
 {
@@ -23,14 +23,17 @@ class Reservation
     private $idTicket;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MainBundle\Entity\Events")
-     * @ORM\JoinColumn(name="Id_ev", referencedColumnName="id_ev")
+     * @var integer
+     *
+     * @ORM\Column(name="id_ev", type="integer", nullable=false)
      */
     private $idEv;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MainBundle\Entity\User")
-     * @ORM\JoinColumn(name="id_par", referencedColumnName="id")
+
+     * @var integer
+     *
+     * @ORM\Column(name="id_par", type="integer", nullable=false)
      */
     private $idPar;
 
@@ -167,6 +170,7 @@ class Reservation
     {
         $this->image = $image;
     }
+
 
 
 }

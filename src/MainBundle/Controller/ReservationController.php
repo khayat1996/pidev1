@@ -4,12 +4,15 @@ namespace MainBundle\Controller;
 
 
 use http\Env\Response;
+use MainBundle\Entity\Solde;
 use MainBundle\Form\EventType;
 use MainBundle\Form\EventsType;
 
 use MainBundle\Entity\Events;
 use MainBundle\Controller\EventController;
 use MainBundle\Entity\Reservation;
+use MainBundle\MainBundle;
+use MainBundle\Repository\ReservationRepository;
 use mysql_xdevapi\DatabaseObject;
 use Psr\Container\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -150,10 +153,13 @@ class ReservationController extends Controller
     {
         $reservation = new Reservation($idEv,$idPar,$nom,$prenom,$image);
 
-            $em = $this->getDoctrine()->getManager();
 
+
+
+            $em = $this->getDoctrine()->getManager();
         $event = $this->getDoctrine()->getRepository(Events::class)->find($idEv);
         $event->setNbPlace($nbPlace);
+
         $em->persist($event);
         $em->persist($reservation);
             $em->flush();
