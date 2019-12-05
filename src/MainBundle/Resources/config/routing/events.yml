@@ -39,3 +39,6 @@ refuser_page:
 events_SMS:
     path:     /SMS
     defaults: { _controller: "MainBundle:Events:SMS"}
+events_delet:
+    path:     /delet/{idEv}
+    defaults: { _controller: "MainBundle:Events:delet" }

@@ -21,15 +21,20 @@ class EventsController extends Controller
      * Lists all event entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $events = $em->getRepository('MainBundle:Events')->findAll();
-
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $events,
+            $request->query->getInt('page', 1)/*page number*/,
+            3/*limit per page*/
+        );
 
         return $this->render('events/index.html.twig', array(
-            'events' => $events,
+            'events' => $pagination,
 
         ));
     }
@@ -199,6 +204,15 @@ class EventsController extends Controller
 
         return $this->redirectToRoute('events_index');
 
+    }
+    public function deletAction($idEv)
+    {
+        $em =$this->getDoctrine()->getManager();
+        $event =$em->getRepository( Events::class)->find($idEv);
+
+        $em->remove($event);
+        $em->flush();
+        return $this->redirectToRoute( "events_index");
     }
 
 }
