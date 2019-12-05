@@ -29,6 +29,7 @@
             </tr>
             </thead>
             <tbody>
+            {% set x=0 %}
             {% for event in events %}
                 {% if event.etat=='Accepte' %}
                     <tr>
@@ -46,7 +47,9 @@
                                 <a class="btn btn-outline-info" href="{{ path('event_show', { 'idEv': event.idEv }) }}">show</a>
 
                                 {% if event.nbPlace>0  %}
+                                   
                                     <a href="{{ path('reservation_news',{'idEv': event.idEv, 'idPar':app.user.id,'nom':app.user.username,'prenom':app.user.username,'image':'image.jpg' ,'nbPlace':event.nbPlace-1  } ) }}"  class="btn btn-primary">Participer</a>
+
                                 {% endif %}
 
                             </ul>

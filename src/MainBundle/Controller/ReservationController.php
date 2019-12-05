@@ -37,9 +37,10 @@ class ReservationController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $reservations = $em->getRepository('MainBundle:Reservation')->findAll();
-
+    $events = $em->getRepository('MainBundle:Events')->findAll();
         return $this->render('reservation/index.html.twig', array(
             'reservations' => $reservations,
+            'events'=>$events,
         ));
     }
 
@@ -158,6 +159,7 @@ class ReservationController extends Controller
 
             $em = $this->getDoctrine()->getManager();
         $event = $this->getDoctrine()->getRepository(Events::class)->find($idEv);
+
         $event->setNbPlace($nbPlace);
 
         $em->persist($event);

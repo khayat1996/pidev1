@@ -36,12 +36,12 @@
                         <thead>
                         <tr>
                         <tr>
-                            <th>Idticket</th>
-                            <th>Idev</th>
-                            <th>Idpar</th>
-                            <th>Nom</th>
-                            <th>Prenom</th>
-                            <th>Image</th>
+                            <th>Event</th>
+                            <th>Organisateur</th>
+                            <th>Lieu</th>
+                            <th>Description</th>
+                            <th>Date</th>
+
                             <th>Actions</th>
                             <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
                             </th>
@@ -50,29 +50,32 @@
 
                         </thead>
                         <tbody>
-
+                        {% for event in events %}
                         {% for reservation in reservations %}
 
                             {% if reservation.idPar == app.user.id %}
+                                {% if event.idEv == reservation.idEv %}
 
                             <tr>
 
 
-                                <td><a href="{{ path('reservation_show', { 'idTicket': reservation.idTicket }) }}">{{ reservation.idTicket }}</a></td>
 
-                                <td>{{ reservation.idEv}}</td>
-                                <td>{{ reservation.idPar }}</td>
-                                <td>{{ reservation.nom}}</td>
-                                <td>{{ reservation.prenom }}</td>
-                                <td>{{ reservation.image }}</td>
+
+                                <td><a href="{{ path('event_show', { 'idEv': event.idEv }) }}">{{ event.nomEvent}}</a></td>
+                                <td>{{event.nomOrg }}</td>
+                                <td>{{ event.lieu}}</td>
+                                <td>{{ event.description }}</td>
+                                <td>{% if event.dtEvent %}{{ event.dtEvent|date('Y-m-d') }}{% endif %}</td>
 
 
                                 <td data-name="del">
                                     <a href="{{ path('reservation_delete',{'id': reservation.idTicket }) }}" class="btn btn-primary">Delete</a>
                                 </td>
                             </tr>
+                                {% endif %}
                             {% endif %}
                         {% endfor %}
+                    {% endfor %}
                         </tbody>
                     </table>
 
