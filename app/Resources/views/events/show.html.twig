@@ -4,7 +4,7 @@
     <center>
     <h1>Event</h1>
 
-    <table border="1" width="500"  class="table table-striped">
+    <table  width="500"  class="table table-striped">
         <tbody>
 
             <tr>
@@ -40,21 +40,23 @@
                 <td>{{ event.etat }}</td>
             </tr>
         </tbody>
-    </table>
+
 
     <ul>
 
-            <a href="{{ path('events_index') }}">Back to the list</a>
 
-<br>
 
-            <a class="btn btn-outline-info" href="{{ path('events_edit', { 'idEv': event.idEv }) }}">Edit</a>
 
-            {{ form_start(delete_form) }}
+        <td> <a class="btn btn-outline-info" href="{{ path('events_edit', { 'idEv': event.idEv }) }}">Edit</a></td>
+
+        <td>  {{ form_start(delete_form) }}
                 <input type="submit" value="Delete" class="btn btn-outline-danger">
-            {{ form_end(delete_form) }}
+            {{ form_end(delete_form) }}</td>
 
     </ul>
+    </table>
+        <td> <a class="btn btn-outline-warning" href="{{ path('events_index') }}">Back to the list</a></td>
+
 
     </center>
 {% endblock %}
