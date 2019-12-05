@@ -26,7 +26,7 @@ class EventController extends Controller
         $pagination = $paginator->paginate(
             $events,
             $request->query->getInt('page', 1)/*page number*/,
-            2/*limit per page*/
+            5/*limit per page*/
         );
 
         return $this->render('event/index.html.twig', array(
@@ -148,9 +148,6 @@ class EventController extends Controller
         return $this->render('event/part.html.twig', array(
             'events' => $pagination,
         ));
-
-
-
     }
 
 
