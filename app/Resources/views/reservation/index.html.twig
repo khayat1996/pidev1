@@ -56,8 +56,7 @@
                             {% if reservation.idPar.id == app.user.id %}
 
                             <tr>
-                                {{ reservation.idEv.NomEvent }}
-                                {{ reservation.idPar.id }}
+
 
                                 <td><a href="{{ path('reservation_show', { 'idTicket': reservation.idTicket }) }}">{{ reservation.idTicket }}</a></td>
                                 <td>{{ reservation.idEv.NomEvent }}</td>
