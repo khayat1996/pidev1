@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\Util\SecureRandom;
 
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")

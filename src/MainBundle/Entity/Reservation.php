@@ -3,12 +3,13 @@
 namespace MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use MainBundle\Entity\Events;
+use MainBundle\Entity\User;
 /**
  * Reservation
  *
  * @ORM\Table(name="reservation", indexes={@ORM\Index(name="id_ev", columns={"id_ev"}), @ORM\Index(name="id_par", columns={"id_par"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MainBundle\Repository\ReservationRepository")
  */
 class Reservation
 {
@@ -169,6 +170,7 @@ class Reservation
     {
         $this->image = $image;
     }
+
 
 
 }
