@@ -42,3 +42,12 @@ events_SMS:
 events_delet:
     path:     /delet/{idEv}
     defaults: { _controller: "MainBundle:Events:delet" }
+all:
+    path:     /all
+    defaults: { _controller: "MainBundle:Events:all" }
+news:
+    path:     /news
+    defaults: { _controller: "MainBundle:Events:news" }
+find:
+    path:     /find/{idEv}
+    defaults: { _controller: "MainBundle:Events:find" }

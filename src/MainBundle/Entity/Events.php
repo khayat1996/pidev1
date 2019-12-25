@@ -3,6 +3,7 @@
 namespace MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use MainBundle\Entity\User;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**

@@ -1,6 +1,8 @@
 <?php
 
 namespace MainBundle\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Client;
 use MainBundle\Form\EventsType;
@@ -8,6 +10,8 @@ use MainBundle\Form\RechercheType;
 use MainBundle\Entity\Events;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Serializer;
+
 
 
 /**
@@ -159,7 +163,7 @@ class EventsController extends Controller
 
     public function accepterAction($idEv, Request $request)
     {
-      //  $this->SMSAction();
+      // $this->SMSAction();
 
         $em = $this->getDoctrine()->getManager();
         $event = $this->getDoctrine()->getRepository(Events::class)->find($idEv);
@@ -214,5 +218,38 @@ class EventsController extends Controller
         $em->flush();
         return $this->redirectToRoute( "events_index");
     }
+    public function allAction()
+    {
+        $event = $this->getDoctrine()->getManager()
+            ->getRepository('MainBundle:Events')->findAll();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($event);
+        return new JsonResponse($formatted);
+    }
+    public function newsAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $event = new Events();
+        $event = setNomOrg($request->get('nomOrg'));
+        $event = setNomEvent($request->get('nomEvent'));
+        $event = setLieu($request->get('lieu'));
+        $event = setNbPlace($request->get('nbPlace'));
+        $event = setDtEvent($request->get('dtEvent'));
+        $event = setsetPrix($request->get('prix'));
+        $event = setDescription($request->get('description'));
+        $event = setEtat($request->get('etat'));
+        $em->persist($event);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($event);
+        return new JsonResponse($formatted);
+    }
+    public function findAction($idEv){
+        $event = $this->getDoctrine()->getManager()
+            ->getRepository('MainBundle:Events')->find($idEv);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($event);
+        return new JsonResponse($formatted);
 
+    }
 }
