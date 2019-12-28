@@ -51,3 +51,6 @@ news:
 find:
     path:     /find/{idEv}
     defaults: { _controller: "MainBundle:Events:find" }
+Add_Event:
+    path:     /Add
+    defaults: { _controller: MainBundle:Events:Add }

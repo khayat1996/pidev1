@@ -234,7 +234,7 @@ class EventsController extends Controller
         $event = setNomEvent($request->get('nomEvent'));
         $event = setLieu($request->get('lieu'));
         $event = setNbPlace($request->get('nbPlace'));
-        $event = setDtEvent($request->get('dtEvent'));
+        $event = setDtEvent(new \DateTime($request->get('dtEvent')));
         $event = setsetPrix($request->get('prix'));
         $event = setDescription($request->get('description'));
         $event = setEtat($request->get('etat'));
@@ -252,4 +252,24 @@ class EventsController extends Controller
         return new JsonResponse($formatted);
 
     }
+
+    public function AddAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $event = new Events();
+        $event->setNomOrg($request->get('nomOrg'));
+        $event->setNomEvent($request->get('nomEvent'));
+        $event->setLieu($request->get('lieu'));
+        $event->setNbPlace($request->get('nbPlace'));
+        $event->setDtEvent(new \DateTime($request->get('dtEvent')));
+        $event->setPrix($request->get('prix'));
+        $event->setDescription($request->get('description'));
+        $event->setEtat($request->get('etat'));
+        $em->persist($event);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($event);
+        return new JsonResponse($formatted);
+    }
+
 }
