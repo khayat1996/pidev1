@@ -54,3 +54,9 @@ find:
 Add_Event:
     path:     /Add
     defaults: { _controller: MainBundle:Events:Add }
+delete_Event:
+    path:     /delete/{id}
+    defaults: { _controller: MainBundle:Events:deleteRequest }
+Rech_Event:
+    path:     /searche/{name}
+    defaults: { _controller: MainBundle:Events:searchEvent }

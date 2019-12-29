@@ -220,10 +220,20 @@ class EventsController extends Controller
     }
     public function allAction()
     {
-        $event = $this->getDoctrine()->getManager()
+       /* $event = $this->getDoctrine()->getManager()
             ->getRepository('MainBundle:Events')->findAll();
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($event);
+        return new JsonResponse($formatted);*/
+        $events = $this->getDoctrine()->getRepository(Events::class)->findAll();
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceLimit(2);
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getIdev();
+        });
+        $normalizers = array($normalizer);
+        $serializer = new Serializer($normalizers);
+        $formatted=$serializer->normalize($events);
         return new JsonResponse($formatted);
     }
     public function newsAction(Request $request)
@@ -272,4 +282,43 @@ class EventsController extends Controller
         return new JsonResponse($formatted);
     }
 
+    public function deleteRequestAction($id){
+
+        $em = $this->getDoctrine()->getManager();
+        $event = $this->getDoctrine()->getRepository(Events::class)->find($id);
+        $em->remove($event);
+        $em->flush();
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceLimit(2);
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getIdev();
+        });
+        $normalizers = array($normalizer);
+        $serializer = new Serializer($normalizers);
+        $formatted=$serializer->normalize($event);
+        return new JsonResponse($formatted);
+
+
+    }
+    public function searchEventAction(Request $request, $name)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('MainBundle:Events');
+
+        $events = $repo->findBy($name);
+
+
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceLimit(2);
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getIdev();
+        });
+        $normalizers = array($normalizer);
+        $serializer = new Serializer($normalizers);
+        $formatted=$serializer->normalize($events);
+        return new JsonResponse($formatted);
+
+
+
+    }
 }
