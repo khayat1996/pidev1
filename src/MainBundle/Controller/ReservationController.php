@@ -3,11 +3,14 @@
 namespace MainBundle\Controller;
 
 
+use Doctrine\ORM\Mapping\Id;
 use http\Env\Response;
 use MainBundle\Entity\Solde;
 use MainBundle\Form\EventType;
 use MainBundle\Form\EventsType;
-
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 use MainBundle\Entity\Events;
 use MainBundle\Controller\EventController;
 use MainBundle\Entity\Reservation;
@@ -153,20 +156,59 @@ class ReservationController extends Controller
     public function newsAction($idEv,$idPar,$nom,$prenom,$image,$nbPlace)
     {
         $reservation = new Reservation($idEv,$idPar,$nom,$prenom,$image);
-
-
-
-
-            $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
         $event = $this->getDoctrine()->getRepository(Events::class)->find($idEv);
-
         $event->setNbPlace($nbPlace);
-
         $em->persist($event);
         $em->persist($reservation);
             $em->flush();
 
             return $this->redirectToRoute('event_part', array('idEv' => $event->getIdev()));
+    }
+    /**
+     * Creates a new reservation entity.
+
+     * @Route("/allfor", name="allfor")
+
+     */
+    public function allforAction(){
+        $reservations = $this->getDoctrine()->getManager()->getRepository('MainBundle:Reservation')->findAll();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($reservations);
+        return new JsonResponse($formatted);
+    }
+    /**
+     * Creates a new reservation entity.
+
+     * @Route("/allfor/{id}", name="allforid")
+
+     */
+    public function findAction($id){
+        $reservations = $this->getDoctrine()->getManager()->getRepository('MainBundle:Reservation')->find($id);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($reservations);
+        return new JsonResponse($formatted);
+
+    }
+    /**
+     * Creates a new reservation entity.
+     *
+     * @Route("/newM/{idEv}/{idPar}/{nom}/{prenom}/{image}/{nbPlace}", name="reservation_newM")
+     * @Method({"GET", "POST"})
+     */
+
+    public function newMAction($idEv,$idPar,$nom,$prenom,$image,$nbPlace){
+        $em = $this->getDoctrine()->getManager();
+        $reservation = new Reservation($idEv,$idPar,$nom,$prenom,$image);
+        $event = $this->getDoctrine()->getRepository(Events::class)->find($idEv);
+        $event->setNbPlace($nbPlace);
+        $em->persist($event);
+        $em->persist($reservation);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($reservation);
+        return new JsonResponse($formatted);
+
     }
 
 
