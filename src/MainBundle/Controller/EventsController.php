@@ -298,7 +298,6 @@ class EventsController extends Controller
         $formatted=$serializer->normalize($event);
         return new JsonResponse($formatted);
 
-
     }
     public function searchEventAction(Request $request, $name)
     {
