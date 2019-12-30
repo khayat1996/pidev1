@@ -301,21 +301,18 @@ class EventsController extends Controller
     }
     public function searchEventAction(Request $request, $name)
     {
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('MainBundle:Events');
 
-        $events = $repo->findBy($name);
-
-
-        $normalizer = new ObjectNormalizer();
-        $normalizer->setCircularReferenceLimit(2);
-        $normalizer->setCircularReferenceHandler(function ($object) {
-            return $object->getIdev();
-        });
-        $normalizers = array($normalizer);
-        $serializer = new Serializer($normalizers);
-        $formatted=$serializer->normalize($events);
+        $event = $this->getDoctrine()->getManager()
+            ->getRepository('MainBundle:Events')->findByName($name);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($event);
         return new JsonResponse($formatted);
+     /*   $event = new Events();
+        $rech = $this->getDoctrine()->getRepository(Events::class)
+            ->findBy((array('nomEvent'=>$event->getNomEvent())));
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($rech);
+        return new JsonResponse($formatted);*/
 
 
 
