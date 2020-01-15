@@ -221,11 +221,7 @@ class EventsController extends Controller
     }
     public function allAction()
     {
-       /* $event = $this->getDoctrine()->getManager()
-            ->getRepository('MainBundle:Events')->findAll();
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($event);
-        return new JsonResponse($formatted);*/
+
         $events = $this->getDoctrine()->getRepository(Events::class)->findAll();
         $normalizer = new ObjectNormalizer();
         $normalizer->setCircularReferenceLimit(2);
