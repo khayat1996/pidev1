@@ -61,6 +61,14 @@
                                     {{ knp_pagination_render(events) }}
                                 </div>
                                 <br>
+                                <form action={{ path("events_SMS")}}>
+                                    <button class="btn btn-outline-success">SendSMS</button>
+                                </form>
+                                <br>
+                                <form action={{ path("events_Mail")}}>
+                                    <button class="btn btn-outline-success">Mail</button>
+                                </form>
+                                <br>
 
                                 <form action={{ path("event_new")}}>
                                     <button class="btn btn-outline-info">Create NEW</button>
