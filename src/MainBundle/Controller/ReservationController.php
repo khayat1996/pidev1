@@ -210,6 +210,30 @@ class ReservationController extends Controller
         return new JsonResponse($formatted);
 
     }
+    /**
+     * Creates a new reservation entity.
+     *
+     * @Route("/deleteM/{id}", name="reservation_deleteM")
+     * @Method("DELETE")
+     */
+    public function deleteMAction($id){
+
+        $em = $this->getDoctrine()->getManager();
+        $reservation = $em->getRepository(Reservation::class)->find($id);
+        $em->remove($reservation);
+        $em->flush();
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceLimit(2);
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getIdTicket();
+        });
+        $normalizers = array($normalizer);
+        $serializer = new Serializer($normalizers);
+        $formatted=$serializer->normalize($reservation);
+        return new JsonResponse($formatted);
+
+
+    }
 
 
 
