@@ -60,3 +60,6 @@ delete_Event:
 Rech_Event:
     path:     /searche/{name}
     defaults: { _controller: MainBundle:Events:searchEvent }
+Update:
+    path:     /upd/{id}
+    defaults: { _controller: MainBundle:Events:update }

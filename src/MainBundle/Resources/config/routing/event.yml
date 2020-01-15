@@ -27,3 +27,9 @@ event_part:
     path:     /part
     defaults: { _controller: "MainBundle:Event:part" }
     methods:  GET
+events_SMS:
+    path:     /SMS
+    defaults: { _controller: "MainBundle:Event:SMS"}
+events_Mail:
+    path:     /mail
+    defaults: { _controller: "MainBundle:Event:Mail"}

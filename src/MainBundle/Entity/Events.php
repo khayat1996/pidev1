@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="events", indexes={@ORM\Index(name="nom_org", columns={"nom_org"})})
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MainBundle\Repository\EventsRepository")
  */
 class Events
 {

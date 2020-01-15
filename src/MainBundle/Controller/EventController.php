@@ -6,6 +6,7 @@ use MainBundle\Form\EventsType;
 use MainBundle\Entity\Events;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Twilio\Rest\Client;
 
 /**
  * Event controller.
@@ -151,7 +152,48 @@ class EventController extends Controller
     }
 
 
+    public function SMSAction()
+    {
+        $account_sid = 'ACca91cf830d7208dc322ac415cffccecc';
+        $auth_token = 'c32ae36ec74340d4066b1c6a50531282';
+// In production, these should be environment variables. E.g.:
+// $auth_token = $_ENV["TWILIO_AUTH_TOKEN"]
 
+// A Twilio number you own with SMS capabilities
+        $twilio_number = "+13312096739";
+
+        $client = new Client($account_sid, $auth_token);
+
+        $client->messages->create(
+        // Where to send a text message (your cell phone?)
+            '+21629288735',
+            array(
+                'from' => $twilio_number,
+                'body' => 'votre evenement Create '
+            )
+        );
+
+
+
+        return $this->redirectToRoute('event_index');
+
+    }
+
+    public function MailAction()
+    {
+
+        $transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 25, 'tls')
+            ->setUsername('apismsm@gmail.com')
+            ->setPassword('nino9tafouhkhayat');
+        $mailer = new \Swift_Mailer($transport);
+        $message=(new \Swift_Message('Events'))
+            ->setFrom('apismsm@gmail.com')
+            ->setTo('khayat.mohamed@esprit.tn')
+            ->setBody('<h3> Votre Evenement Supprime</h3>','text/html');
+        $mailer->send($message);
+        return $this->redirectToRoute('event_index');
+
+    }
 
 
 }

@@ -163,7 +163,7 @@ class EventsController extends Controller
 
     public function accepterAction($idEv, Request $request)
     {
-      // $this->SMSAction();
+    // $this->SMSAction();
 
         $em = $this->getDoctrine()->getManager();
         $event = $this->getDoctrine()->getRepository(Events::class)->find($idEv);
@@ -185,28 +185,29 @@ class EventsController extends Controller
     }
     public function SMSAction()
     {
-        $account_sid = 'AC564d26deab05c8684882d7128e79a76a';
-        $auth_token = '44d7b0630152762d627e78d613ff2b5a';
+        $account_sid = 'ACca91cf830d7208dc322ac415cffccecc';
+        $auth_token = 'c32ae36ec74340d4066b1c6a50531282';
 // In production, these should be environment variables. E.g.:
 // $auth_token = $_ENV["TWILIO_AUTH_TOKEN"]
 
 // A Twilio number you own with SMS capabilities
-        $twilio_number = "+18046813017";
+        $twilio_number = "+13312096739";
 
         $client = new Client($account_sid, $auth_token);
 
-            $client->messages->create(
-            // Where to send a text message (your cell phone?)
-                '+21629288735',
-                array(
-                    'from' => $twilio_number,
-                    'body' => 'votre evenement est accepter '
-                )
-            );
+        $client->messages->create(
+        // Where to send a text message (your cell phone?)
+            '+21629288735',
+            array(
+                'from' => $twilio_number,
+                'body' => 'votre evenement Accepter'
+            )
+        );
 
 
 
         return $this->redirectToRoute('events_index');
+
 
     }
     public function deletAction($idEv)
@@ -298,26 +299,41 @@ class EventsController extends Controller
         $formatted=$serializer->normalize($event);
         return new JsonResponse($formatted);
 
-
     }
     public function searchEventAction(Request $request, $name)
     {
+
+        $event = $this->getDoctrine()->getManager()
+            ->getRepository('MainBundle:Events')->findByName($name);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($event);
+        return new JsonResponse($formatted);
+    }
+    public function updateAction(Request $request, $id)
+    {
         $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('MainBundle:Events');
 
-        $events = $repo->findBy($name);
+        $event = new Events();
+        $event = $em->getRepository(Events::class)->find($id);
+        $event->setNomOrg($request->get('nomOrg'));
+        $event->setNomEvent($request->get('nomEvent'));
+        $event->setLieu($request->get('lieu'));
+        $event->setNbPlace($request->get('nbPlace'));
+        $event->setDtEvent(new \DateTime($request->get('dtEvent')));
+        $event->setPrix($request->get('prix'));
+        $event->setDescription($request->get('description'));
+        $event->setEtat($request->get('etat'));
 
-
+        $em->flush();
         $normalizer = new ObjectNormalizer();
         $normalizer->setCircularReferenceLimit(2);
-        $normalizer->setCircularReferenceHandler(function ($object) {
-            return $object->getIdev();
+        $normalizer->setCircularReferenceHandler(function ($tasks) {
+            return $tasks;
         });
         $normalizers = array($normalizer);
         $serializer = new Serializer($normalizers);
-        $formatted=$serializer->normalize($events);
+        $formatted=$serializer->normalize($event);
         return new JsonResponse($formatted);
-
 
 
     }
